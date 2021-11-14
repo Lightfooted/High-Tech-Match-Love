@@ -1,9 +1,9 @@
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
-  --light: #fafafa;
-  --dark: #272f32;
+  --primary: #E0ECDE;
+  --secondary: #68B2A0;
+  --light: #FFFFFF;
+  --dark: #2C6975;
+  --darker: #021A1E;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
@@ -21,12 +21,16 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Karla', sans-serif;
-  font-weight: 400;
+  font-family: 'HKGroteskRegular';
   line-height: 1.5;
   font-size: 16px;
   color: var(--dark);
 }
+
+/* Fonts */
+
+/* spectral extra light */
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;1,200&display=swap');
 
 h1,
 h2,
@@ -34,10 +38,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Rubik', sans-serif;
-  font-weight: 500;
-  margin: 5px 0;
-  line-height: 1.25;
+  font-family: 'Spectral', serif;  
+  color: var(--darker);
+  font-weight: lighter;
 }
 
 h1 {
@@ -67,7 +70,16 @@ h6 {
 p {
   font-size: 1.1rem;
   margin-top: 0;
+  font-family: 'HKGroteskRegular';
+  font-weight: lighter;
+  font-style: normal;
 }
+
+ul {
+  list-style-type: none;
+  text-transform: uppercase;
+}
+
 
 a {
   color: var(--tertiary);
@@ -87,20 +99,42 @@ header a {
   color: var(--light);
 }
 
+/* buttons */
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
 button {
   font-size: 1rem;
   text-decoration: none;
-  padding: 0.25rem 1rem;
-  border-radius: .5rem;
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 0 1px;
-  background-color: var(--secondary);
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #68B2A0 0%, #E0ECDE 51%, #68B2A0 100%);
 }
 
+/* changes the direction of the background on hover */
 button:hover {
-  opacity: .8;
+  background-position: right center; 
 }
 
 button[disabled] {
