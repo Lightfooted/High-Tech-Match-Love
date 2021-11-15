@@ -1,17 +1,13 @@
-import React, { useState } from "react";
-import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
-import SelectUserImage from "../components/SelectUserImage";
+import React from "react";
 
 const Home = () => {
-  const [currentCategory, setCategory] = useState("");
 
   return (
-    <div className="container">
-      <CategoryMenu setCategory={setCategory} />
-      <SelectUserImage setCategory={setCategory} />
-      <ProductList currentCategory={currentCategory} />
-    </div>
+    <main>
+          <section> 
+            <h1>Welcome to HTML: High Tech Match Love!</h1>
+          </section>
+      </main>
   );
 };
 

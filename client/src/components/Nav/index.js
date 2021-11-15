@@ -35,6 +35,11 @@ function Nav() {
               Login
             </Link>
           </li>
+          <li className="mx-1">
+            <Link to="/profile">
+              Profile
+            </Link>
+          </li>
         </ul>
       );
     }
@@ -43,7 +48,7 @@ function Nav() {
   return (
     <header className="flex-row px-1">
         <Link to="/">
-        <span class="logo">
+        <span className="logo">
       <a href="/">
         <img src={Logo} height="40" width="180" alt="text here" /></a>
     </span>
