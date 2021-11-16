@@ -96,7 +96,7 @@ header {
 }
 
 header a {
-  color: var(--light);
+  color: var(--dark);
 }
 
 /* buttons */
