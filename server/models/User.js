@@ -65,12 +65,12 @@ const userSchema = new Schema({
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {
-        if (this.isNew || this.isModified('password')) {
-            const saltRounds = 10;
-            this.password = await bcrypt.hash(this.password, saltRounds);
-        }
-    
-        next();
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+
+    next();
 });
 
 // compare the incoming password with the hashed password
@@ -78,12 +78,20 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('fullName').get(function() {
-    return  `${firstName} ${lastName}`;
+userSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000) {
+        next(new Error('Either the Email or GitHub ID already belong to a user.'));
+    } else {
+        next(new Error(`error code is ${error.code} and the full error is: ${error}`));
+    }
 });
 
-userSchema.virtual('githubLink').get(function() {
-    return  `https://github.com/${githubId}`;
+userSchema.virtual('fullName').get(function () {
+    return `${firstName} ${lastName}`;
+});
+
+userSchema.virtual('githubLink').get(function () {
+    return `https://github.com/${githubId}`;
 });
 
 const User = mongoose.model('User', userSchema);
