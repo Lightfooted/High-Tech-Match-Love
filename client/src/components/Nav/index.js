@@ -48,10 +48,7 @@ function Nav() {
   return (
     <header className="flex-row px-1">
         <Link to="/">
-        <span className="logo">
-      <a href="/">
-        <img src={Logo} height="40" width="180" alt="text here" /></a>
-    </span>
+        <img className="logo" src={Logo} height="40" width="180" alt="logo" />
         </Link>
       <nav>
         {showNavigation()}
