@@ -16,16 +16,21 @@ const userSchema = new Schema({
         trim: true
     },
 
-    userName: {
+    email: {
         type: String,
         required: true,
         unique: true
     },
 
-    email: {
+    githubId: {
+        type: String,
+        required: true
+    },
+
+    password: {
         type: String,
         required: true,
-        unique: true
+        minlength: 5
     },
 
     location: {
@@ -38,23 +43,12 @@ const userSchema = new Schema({
         required: false
     },
 
-    password: {
-        type: String,
-        required: true,
-        minlength: 5
-    },
-
     rightSwipes: [
         {
             type: Schema.Types.ObjectId,
             ref: 'User'
         }
     ],
-
-    githubLink: {
-        type: String,
-        required: false
-    },
 
     profilePicUrl: {
         type: String,
@@ -76,6 +70,14 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('fullName').get(function() {
+    return  `${firstName} ${lastName}`;
+});
+
+userSchema.virtual('githubLink').get(function() {
+    return  `https://github.com/${githubId}`;
+});
 
 const User = mongoose.model('User', userSchema);
 

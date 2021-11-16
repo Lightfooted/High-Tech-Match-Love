@@ -5,12 +5,11 @@ const typeDefs = gql`
     _id: ID
     firstName: String
     lastName: String
-    userName: String
     email: String
     location: String
     bio: String
     rightSwipes: [User]
-    githubLink: String
+    githubId: String
     profilePicUrl: String
   }
 
@@ -34,22 +33,20 @@ const typeDefs = gql`
   type Mutation {
     addUser(firstName: String!,
             lastName: String!,
-            userName: String!, 
             email: String!, 
             password: String!, 
+            githubId: String!, 
             location: String, 
             bio: String, 
-            githubLink: String, 
             profilePicUrl: String): Auth
     addRightSwipe(toAdd: ID!): User,
     updateUser( firstName: String, 
                 lastName: String,
-                userName: String,
                 email: String, 
                 password: String, 
                 location: String, 
                 bio: String, 
-                githubLink: String, 
+                githubId: String, 
                 profilePicUrl: String): User
     login(email: String!, password: String!): Auth
   }
