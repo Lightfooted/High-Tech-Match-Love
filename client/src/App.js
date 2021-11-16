@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import SelectedUserImage from './components/SelectUserImage';
 import Nav from './components/Nav';
+import GithubUsers from './pages/GithubUsers';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,6 +46,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile" component={SelectedUserImage} />
+            <Route exact path="/gitusers" component={GithubUsers} />
             <Route component={NoMatch} />
           </Switch>
         </div>
