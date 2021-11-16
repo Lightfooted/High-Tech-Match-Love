@@ -6,7 +6,7 @@ const resolvers = {
     Query: {
         user: async (parent, args, context) => {
             if (context.user) {
-                const user = await User.findById(context.user._id).populate('rightSwipes', '_id userName');
+                const user = await User.findById(context.user._id).populate('rightSwipes', '_id');
 
                 return user;
             }
@@ -63,7 +63,7 @@ const resolvers = {
         addRightSwipe: async (parent, { toAdd }, context) => {
             if (context.user) {
                 return await User.findByIdAndUpdate(context.user._id, { $addToSet: { rightSwipes: toAdd } })
-                    .populate('rightSwipes', '_id userName');
+                    .populate('rightSwipes', '_id');
             }
 
             throw new AuthenticationError('Not logged in');
