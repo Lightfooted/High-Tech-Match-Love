@@ -9,6 +9,7 @@ const typeDefs = gql`
     location: String
     bio: String
     rightSwipes: [User]
+    leftSwipes: [User]
     githubId: String
     profilePicUrl: String
   }
@@ -28,6 +29,7 @@ const typeDefs = gql`
     user: User
     matches(userId: ID): [Match]
     rightSwipes(userId: ID): [User]
+    leftSwipes(userId: ID): [User]
   }
 
   type Mutation {
@@ -40,6 +42,7 @@ const typeDefs = gql`
             bio: String, 
             profilePicUrl: String): Auth
     addRightSwipe(toAdd: ID!): User,
+    addLeftSwipe(toAdd: ID!): User,
     updateUser( firstName: String, 
                 lastName: String,
                 email: String, 
