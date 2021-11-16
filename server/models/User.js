@@ -50,6 +50,13 @@ const userSchema = new Schema({
         }
     ],
 
+    leftSwipes: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
+
     profilePicUrl: {
         type: String,
         required: false

@@ -1,44 +1,5 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
-      _id
-      name
-      description
-      price
-      quantity
-      image
-      category {
-        _id
-      }
-    }
-  }
-`;
-
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      name
-      description
-      price
-      quantity
-      category {
-        name
-      }
-    }
-  }
-`;
-
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
-      _id
-      name
-    }
-  }
-`;
 
 export const QUERY_USER = gql`
   {
@@ -47,10 +8,27 @@ export const QUERY_USER = gql`
       lastName
       email
       githubId
-      location:
+      location
       bio
       profilePicUrl
-      githubLink
+      rightSwipes { _id }
+      leftSwipes { _id }
     }
+  }
+`;
+
+export const QUERY_GITHUB_USER = gql`
+  {
+      ghUser {
+        firstName
+        lastName
+        email
+        githubId
+        location
+        bio
+        profilePicUrl
+        rightSwipes { _id }
+        leftSwipes { _id }
+      }
   }
 `;
