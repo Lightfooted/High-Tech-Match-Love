@@ -30,3 +30,24 @@ mutation addUser(
     }
   }
 `;
+
+export const ADD_PROFILE_PIC = gql`
+    mutation addProfilePic($picPath: String!) {
+        addProfilePic(picPath:$picPath) {
+            user {
+                profilePicUrl
+            }    
+        }        
+    }
+`;
+
+export const SAVE_PROFILE_PIC = gql`
+    mutation saveProfilePic($picPath: String!) {
+        saveProfilePic(picPath:$picPath) {
+            picInfo {
+                url
+            }    
+        }        
+    }
+`;
+

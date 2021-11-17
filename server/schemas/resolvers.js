@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Match } = require('../models');
+const { User, Match, PicInfo } = require('../models');
 const { signToken } = require('../utils/auth');
+const cloudinary = require('cloudinary').v2;
 
 const resolvers = {
     Query: {
@@ -17,17 +18,17 @@ const resolvers = {
 
             throw new AuthenticationError('Not logged in');
         },
-        
+
         matches: async (parent, { userId }) => {
             /*
                 WRITE THE CODE
                 return an array of matches that have the userId as either the requester or the requestee
             */
         },
-        
+
         rightSwipes: async (parent, { userId }) => {
             // returns the array of right swipes with fully populated users
-            const user = await User.findById({ _id: userId}).populate('rightSwipes');
+            const user = await User.findById({ _id: userId }).populate('rightSwipes');
             return user.rightSwipes;
         },
 
@@ -93,7 +94,20 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
+        // saves the profile picture from the passed URL into Cloudinary and then saved the URL returned from Cloudinary to
+        // the users profilePicUrl
+        addProfilePic: async (parent, { picPath }, context) => {
+            if (context.user) {
+                const storageResult = await cloudinary.uploader.upload(picPath, async function (err, image) {
+                    if (err) {
+                        throw new AuthenticationError(`Unable to save profile picture.`);
+                    }
+                })
+                return await User.findByIdAndUpdate(context.user._id, { profilePicUrl: storageResult.url }, { new: true });
+            }
 
+            throw new AuthenticationError('Not logged in');
+        },
     }
 };
 
