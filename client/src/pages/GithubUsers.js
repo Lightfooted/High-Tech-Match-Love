@@ -62,7 +62,7 @@ const GitUsers = () => {
             <div className="GitUsers">
                 <h1>List of {data.length || 0} users:</h1>
                 {data.map((user) => (
-                    <div key={user.id}>
+                    <div>
                         <p>Login ID: {user.login}, GitHub ID: {user.id} </p>
                         <a href={user.url} >Github Link </a>
                         <img alt='pic' src={user.avatar_url} />
