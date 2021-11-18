@@ -16,16 +16,21 @@ const userSchema = new Schema({
         trim: true
     },
 
-    userName: {
+    email: {
         type: String,
         required: true,
         unique: true
     },
 
-    email: {
+    githubId: {
+        type: String,
+        required: true
+    },
+
+    password: {
         type: String,
         required: true,
-        unique: true
+        minlength: 5
     },
 
     location: {
@@ -38,12 +43,6 @@ const userSchema = new Schema({
         required: false
     },
 
-    password: {
-        type: String,
-        required: true,
-        minlength: 5
-    },
-
     rightSwipes: [
         {
             type: Schema.Types.ObjectId,
@@ -51,10 +50,12 @@ const userSchema = new Schema({
         }
     ],
 
-    githubLink: {
-        type: String,
-        required: false
-    },
+    leftSwipes: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
 
     profilePicUrl: {
         type: String,
@@ -64,18 +65,34 @@ const userSchema = new Schema({
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {
-        if (this.isNew || this.isModified('password')) {
-            const saltRounds = 10;
-            this.password = await bcrypt.hash(this.password, saltRounds);
-        }
-    
-        next();
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+
+    next();
 });
 
 // compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
+
+userSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000) {
+        next(new Error('Either the Email or GitHub ID already belong to a user.'));
+    } else {
+        next(new Error(`error code is ${error.code} and the full error is: ${error}`));
+    }
+});
+
+userSchema.virtual('fullName').get(function () {
+    return `${firstName} ${lastName}`;
+});
+
+userSchema.virtual('githubLink').get(function () {
+    return `https://github.com/${githubId}`;
+});
 
 const User = mongoose.model('User', userSchema);
 
