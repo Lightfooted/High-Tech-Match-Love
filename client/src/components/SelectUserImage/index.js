@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
+// We will import Apollo Client and utila/queries to grab data for the current logged in user.
+import { QUERY_USER } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
-const UserProfilePic = () => {
+const UserProfile = () => {
+
   const [selectedImage, setSelectedImage] = useState(null);
+  const { loading, data } = useQuery(QUERY_USER);
+
+  const user = data?.user || {};
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
 
-    <><div class="card">
+    <><div className="card">
 
       <img src="https://picsum.photos/200" alt="user-pic" />
-      <p className='user-name'>Name:</p>
+
+      <p className='user-name'>Name: {user.firstName} {user.lastName}</p>
       <p className='age'>Age:</p>
       <p className='location'>Locaton:</p>
       <p className='bio'>Bio:</p>
@@ -29,4 +41,4 @@ const UserProfilePic = () => {
   );
 };
 
-export default UserProfilePic;
+export default UserProfile;
