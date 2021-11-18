@@ -39,7 +39,7 @@ h4,
 h5,
 h6 {
   font-family: 'Spectral', serif;  
-  color: var(--darker);
+  color: var(--dark);
   font-weight: lighter;
 }
 
@@ -88,12 +88,14 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  color:var(--light);
 }
 
 header {
   background: var(--primary);
+  justify-content: flex-start;
 }
+
 
 header a {
   color: var(--dark);
@@ -178,6 +180,7 @@ input:focus {
 .flex-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .space-between {
@@ -242,3 +245,5 @@ input:focus {
     width: 100%;
   }
 }
+
+/* Navbar */
