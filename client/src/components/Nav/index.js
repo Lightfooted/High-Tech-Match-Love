@@ -8,9 +8,6 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-<<<<<<< HEAD
-        <ul className="flex-row ">
-=======
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/profile">
@@ -22,7 +19,6 @@ function Nav() {
               Git Users
             </Link>
           </li>
->>>>>>> 8c876f46e89b33bf0b98aa49ee94fc06a449059a
           <li className="mx-1">
             <Link to="/" onClick={() => Auth.logout()}>
               Logout
