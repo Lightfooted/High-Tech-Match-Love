@@ -98,12 +98,7 @@ const resolvers = {
         // the users profilePicUrl
         addProfilePic: async (parent, { picPath }, context) => {
             if (context.user) {
-                const storageResult = await cloudinary.uploader.upload(picPath, async function (err, image) {
-                    if (err) {
-                        throw new AuthenticationError(`Unable to save profile picture.`);
-                    }
-                })
-                return await User.findByIdAndUpdate(context.user._id, { profilePicUrl: storageResult.url }, { new: true });
+                return await User.findByIdAndUpdate(context.user._id, { profilePicUrl: picPath }, { new: true });
             }
 
             throw new AuthenticationError('Not logged in');

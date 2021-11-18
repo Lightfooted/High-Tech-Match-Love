@@ -34,9 +34,7 @@ mutation addUser(
 export const ADD_PROFILE_PIC = gql`
     mutation addProfilePic($picPath: String!) {
         addProfilePic(picPath:$picPath) {
-            user {
-                profilePicUrl
-            }    
+            profilePicUrl
         }        
     }
 `;

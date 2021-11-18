@@ -6,31 +6,21 @@ import { WidgetLoader, Widget } from 'react-cloudinary-upload-widget';
 
 const UserProfilePic = () => {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [addProfilePic, { error }] = useMutation(ADD_PROFILE_PIC);
-
-
-    async function handleFileChange(e) {
-        e.preventDefault();
-
-        try {
-            const enteredFileName = e.target.files[0].name;
-            console.log(`@@@@@@@@@@ enteredFileName: ${enteredFileName}`);
-            // save the file to storage and save the URL in the user's account
-            const mutationResponse = await addProfilePic({
-                variables: { picPath: enteredFileName },
-            });
-            console.log(`@@@@@@@@@@ after addProfilePic`);
-            const savedUrl = mutationResponse.data.addProfilePic.user.profilePicUrl;
-            console.log(`@@@@@@@@@@ savedUrl: ${savedUrl}`);
-            setSelectedImage(savedUrl);
-            console.log(`@@@@@@@@@@ selected image set`);
-        } catch (err) {
-            console.log(err);
+    // const [addProfilePic, { error }] = useMutation(ADD_PROFILE_PIC);
+    const [addProfilePic, { data, loading }] = useMutation(ADD_PROFILE_PIC, {
+        onError: (err) => {
+            console.log(`bjj error: ${err}`);
         }
-    }
+      });
 
     async function successCallBack(e) {
-        console.log(`successCallBack`);
+        const url = e.info.url;
+        console.log(`successCallBack url: ${url}`);
+        const mutationResponse = await addProfilePic({
+            variables: { picPath: url },
+        });
+        console.log(`response: ${JSON.stringify(mutationResponse)}`);
+        setSelectedImage(url);
     }
 
     async function failureCallBack(e) {
@@ -39,22 +29,23 @@ const UserProfilePic = () => {
 
     return (
 
-        <><div className="card">
+        <>
+            <div className="card">
 
-            <img src="https://picsum.photos/200" alt="user-pic" />
-            <p className='user-name'>Name:</p>
-            <p className='age'>Age:</p>
-            <p className='location'>Locaton:</p>
-            <p className='bio'>Bio:</p>
-            <p className='gitlink'>Github Link:</p>
+                {/* <img src="https://picsum.photos/200" alt="user-pic" /> */}
+                <p className='user-name'>Name:</p>
+                <p className='age'>Age:</p>
+                <p className='location'>Locaton:</p>
+                <p className='bio'>Bio:</p>
+                <p className='gitlink'>Github Link:</p>
 
-        </div>
+            </div>
 
             <div>
                 {selectedImage && (
                     <div>
-                        <img alt='user-pic' width={'300px'} src={URL.createObjectURL(selectedImage)} />
-                        <button onClick={() => setSelectedImage(null)}>Delete</button>
+                        <img alt='user-pic' width={'300px'} src={selectedImage} />
+                        {/* <button onClick={() => setSelectedImage(null)}>Delete</button> */}
                     </div>
                 )}
 
@@ -66,7 +57,7 @@ const UserProfilePic = () => {
                 resourceType={'image'}
                 cloudName={'htmlove'}
                 uploadPreset={'cuvud7q0'}
-                buttonText={'Upload'}
+                buttonText={'Upload Profile Picture'}
                 style={{
                     color: 'white',
                     border: 'none',
