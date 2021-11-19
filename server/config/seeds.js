@@ -32,7 +32,8 @@ db.once('open', async () => {
         location: 'Miami',
         bio: 'Is there anything more fun than coding with a companion?',
         password: 'password12345',
-        githubId: 'bsteinFAKE'
+        githubId: 'bsteinFAKE',
+        profilePicUrl: `fakeUrl`
     });
 
 

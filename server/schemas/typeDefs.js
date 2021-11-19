@@ -52,6 +52,7 @@ const typeDefs = gql`
                 githubId: String, 
                 profilePicUrl: String): User
     login(email: String!, password: String!): Auth
+    addProfilePic(picPath: String!): User
   }
 `;
 
