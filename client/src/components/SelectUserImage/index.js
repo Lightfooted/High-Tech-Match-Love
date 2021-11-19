@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // We will import Apollo Client and utila/queries to grab data for the current logged in user.
 import { QUERY_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE_PIC } from '../../utils/mutations';
+import { UPDATE_USER } from '../../utils/mutations';
 import { WidgetLoader, Widget } from 'react-cloudinary-upload-widget';
+import defaultUserPic from "../../assets/genericuser.png";
 
 
 const UserProfile = () => {
 
-    const [selectedImage, setSelectedImage] = useState(null);
-    const { loading, data } = useQuery(QUERY_USER);
+    const [ user, setUser] = useState({});
+    const { loading, error } = useQuery(QUERY_USER, { fetchPolicy: 'no-cache',
+        onCompleted: data => setUser(data.user),
+      });
 
-    // const [addProfilePic, { picData, picLoading }] = useMutation(ADD_PROFILE_PIC, {
-    const [addProfilePic] = useMutation(ADD_PROFILE_PIC, {
+    const [updateUser] = useMutation(UPDATE_USER, {
         onError: (err) => {
-            console.log(`bjj error: ${err}`);
+            console.log(`BrendaJ error: ${err}`);
         }
     });
 
     async function successCallBack(e) {
         const url = e.info.url;
-        console.log(`successCallBack url: ${url}`);
-        const mutationResponse = await addProfilePic({
-            variables: { picPath: url },
+        const mutationResponse = await updateUser({
+            variables: { profilePicUrl: url },
         });
-        console.log(`response: ${JSON.stringify(mutationResponse)}`);
-        setSelectedImage(url);
+        
+        setUser(mutationResponse.data.updateUser);
     }
 
     async function failureCallBack(e) {
-        console.log(`failureCallBack`);
+        console.log(`BrendaJ failureCallBack`);
     }
 
-
-    const user = data?.user || {};
-
+    
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -44,23 +43,17 @@ const UserProfile = () => {
         <>
             <div className="card">
 
-                <p className='user-name'>Name: {user.firstName} {user.lastName}</p>
+                <div>
+                    <img alt='user-pic' width={'300px'} src={user?.profilePicUrl || defaultUserPic} />
+                </div>
+
+                <p className='user-name'>Name: {user?.firstName} {user?.lastName}</p>
                 <p className='age'>Age:</p>
-                <p className='location'>Locaton:</p>
+                <p className='location'>Location:</p>
                 <p className='bio'>Bio:</p>
                 <p className='gitlink'>Github Link:</p>
 
             </div>
-
-            <div>
-                {selectedImage && (
-                    <div>
-                        <img alt='user-pic' width={'300px'} src={selectedImage} />
-                    </div>
-                )}
-
-            </div>
-
 
             <WidgetLoader />
             <Widget
