@@ -20,6 +20,11 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
+            <Link to="/chat">
+              Chat
+            </Link>
+          </li>
+          <li className="mx-1">
             <Link to="/" onClick={() => Auth.logout()}>
               Logout
             </Link>
