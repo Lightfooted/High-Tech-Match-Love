@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 
 // We do not have to use the default css. Create a new styles.css file. Keep in mind though that all classes are prefixed as rcw-
 import 'react-chat-widget/lib/styles.css';
+import UPIC from '../assets/genericuser.png';
 
 function Chat() {
 
@@ -23,8 +24,9 @@ function Chat() {
       <div className="App">
         <Widget
           handleNewUserMessage={handleNewUserMessage}
+          titleAvatar={UPIC}
           title={user.firstName}
-          subtitle='Viewing your messages'
+          subtitle='HTML Chat'
         />
       </div>
     );
