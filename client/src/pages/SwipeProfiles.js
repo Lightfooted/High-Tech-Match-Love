@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { randomNumber } from '../utils/random';
-// import
+import { ADD_RIGHT_SWIPE } from '../utils/mutations'
+import { useMutation } from "@apollo/client";
 
 const SwipeProfile = () => {
     const [data, setData] = useState([]);
     const [searchInput, setsearchInput] = useState('');
+
+    const { addRightSwipe } = useMutation(ADD_RIGHT_SWIPE)
 
     const gitSearchString = (numResults) => {
         const sinceId = randomNumber(1, 30000000);
@@ -31,9 +34,13 @@ const SwipeProfile = () => {
         fetchData();
     }, []);
 
-    const handleSwipe = (action)=> {
+    const handleSwipe = async (action)=> {
+        console.log(action)
         if(action === 'save'){
-            console.log('hi')
+            // await addRightSwipe({ 
+            //     variables: 
+            // })
+            console.log(data[githubIndex])
         }
         else if(action === 'dismiss'){
             console.log('hello')

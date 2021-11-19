@@ -19,6 +19,21 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
+        users: async (parent, args, context) => {
+            // if .user) {
+                // right and left swipes arrays populated with only the _id and githubId
+                const user = await User
+                    .find()
+                    .populate('rightSwipes', '_id githubId')
+                    .populate('leftSwipes', '_id githubId');
+
+                return user;
+            // }
+
+            throw new AuthenticationError('Not logged in');
+        },
+
+
         matches: async (parent, { userId }) => {
             /*
                 WRITE THE CODE
