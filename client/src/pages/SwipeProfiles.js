@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { randomNumber } from '../utils/random';
+// import
 
 const SwipeProfile = () => {
     const [data, setData] = useState([]);
@@ -30,6 +31,16 @@ const SwipeProfile = () => {
         fetchData();
     }, []);
 
+    const handleSwipe = (action)=> {
+        if(action === 'save'){
+            console.log('hi')
+        }
+        else if(action === 'dismiss'){
+            console.log('hello')
+        }
+        setGithubIndex(githubIndex + 1)
+    }
+
     if (!searchInput) return <div>...loading</div>;
     else {
         return (
@@ -39,12 +50,8 @@ const SwipeProfile = () => {
                 <a href={data[githubIndex].url} >Github Link </a>
                 <img alt='pic' src={data[githubIndex].avatar_url} />
                 <div>
-                <button
-                onClick={() => setGithubIndex(githubIndex + 1)}
-                >Dismiss</button>
-                <button
-                onClick={() => setGithubIndex(githubIndex + 1)}
-                >Request Match</button>
+                <button onClick={ ()=> handleSwipe('dismiss') }>Dismiss</button>
+                <button onClick={ ()=> handleSwipe('save') } >Request Match</button>
                 </div>
             </div>
 

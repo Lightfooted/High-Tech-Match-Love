@@ -38,3 +38,13 @@ export const ADD_PROFILE_PIC = gql`
         }        
     }
 `;
+
+export const ADD_RIGHT_SWIPE = gql`
+  mutation addRightSwipe($toAdd: ID!){
+    addRightSwipe(toAdd: $toAdd){
+      _id
+      firstName
+      lastName
+    }
+  }
+`
