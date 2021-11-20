@@ -8,8 +8,9 @@ const Home = () => {
   return (
     <main>
           <section className="container"> 
-          <div className="homepage-section">
+          <div classame="homepage-title">
             <h1>Make the first Move.</h1>
+            </div>
             <div className="home-btn btn-container">
             <button>
               login / signup
@@ -20,7 +21,6 @@ const Home = () => {
             className='cover-img'
             alt='cover'
             />
-            </div>
           </section>
           <section>
           <div
@@ -29,9 +29,11 @@ const Home = () => {
           backgroundImage: 'url('+homepageImage+')',
           backgroundSize: "cover",
           height: "90vh",
+          position: "relative",
+          backgroundPosition: "center",
         }}>
-          <h2>What's Your Github?</h2>
-          <p>
+          <h2 className="homepage-text homepage-h2">What's Your Github?</h2>
+          <p className="homepage-text homepage-p">
             A unique experience to dating strictly for developers.
           </p>
           <div className="home-btn btn-container">
@@ -41,7 +43,7 @@ const Home = () => {
           </div>
           <img 
             src={star}
-            className='star'
+            className='star homepage-text'
             alt='star'
             width='40px'
             height='40px'
