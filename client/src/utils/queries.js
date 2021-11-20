@@ -21,6 +21,7 @@ export const QUERY_USER = gql`
 export const QUERY_ALL_USERS = gql`
   {
     allUsers {
+      _id
       firstName
       lastName
       email
@@ -51,22 +52,23 @@ export const QUERY_GITHUB_USER = gql`
   }
 `;
 
-// returns an array of chat messages between the logged in user and the user with the passed in ID
-export const QUERY_CHATS_WITH_USER = gql`
-    query chatsWithUser($userId:ID!) {
-        chatsWithUser(userId: $userId) {
-            messageAuthor {
+// returns an array of messages between the logged in user and the user with the passed in ID
+export const QUERY_MESSAGES_WITH_USER = gql`
+    query messagesWithUser($userId:ID!) {
+        messagesWithUser(userId: $userId) {
+            _id
+            author {
                 _id
                 firstName
                 lastName
             },
-            messageRecipient {
+            recipient {
                 _id
                 firstName
                 lastName
             },
-            chatText,
+            text,
             createdAt
+            }
         }
-    }
 `;

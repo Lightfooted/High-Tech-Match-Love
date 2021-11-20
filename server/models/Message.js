@@ -4,20 +4,20 @@ const dateFormat = require('../utils/dateFormat');
 
 const { Schema } = mongoose;
 
-const oneToOneChatSchema = new Schema({
-    messageAuthor:
+const messageSchema = new Schema({
+    author:
     {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    messageRecipient:
+    recipient:
     {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    chatText: {
+    text: {
         type: String,
         required: true,
         minlength: 1,
@@ -30,9 +30,9 @@ const oneToOneChatSchema = new Schema({
     }
 });
 
-const OneToOneChat = mongoose.model('OneToOneChat', oneToOneChatSchema);
+const Message = mongoose.model('Message', messageSchema);
 
-module.exports = OneToOneChat;
+module.exports = Message;
 
 
 // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )

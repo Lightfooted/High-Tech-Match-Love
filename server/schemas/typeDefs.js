@@ -15,10 +15,11 @@ const typeDefs = gql`
     age: Int
   }
 
-  type OneToOneChat {
-      messageAuthor: User
-      messageRecipient: User
-      chatText: String
+  type Message {
+      _id: ID
+      author: User
+      recipient: User
+      text: String
       createdAt: String
   }
 
@@ -39,8 +40,8 @@ const typeDefs = gql`
     matches(userId: ID): [Match]
     rightSwipes(userId: ID): [User]
     leftSwipes(userId: ID): [User]
-    usersWithChats: [User]
-    chatsWithUser(userId: ID): [OneToOneChat]
+    usersWithMessages: [User]
+    messagesWithUser(userId: ID): [Message]
   }
 
   type Mutation {

@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Match, OneToOneChat } = require('../models');
+const { User, Match, Message } = require('../models');
 
 db.once('open', async () => {
 
@@ -47,13 +47,15 @@ db.once('open', async () => {
 
     console.log('users seeded');
 
-    await OneToOneChat.create({
-        messageAuthor: user4._id,
-        messageRecipient: user3._id,
-        chatText: 'a message from Brenda to Billy',
+    await Message.deleteMany();
+
+    await Message.create({
+        author: user4._id,
+        recipient: user3._id,
+        text: 'a message from Brenda to Billy',
     });
 
-    console.log('chats seeded');
+    console.log('messages seeded');
 
     process.exit();
 });

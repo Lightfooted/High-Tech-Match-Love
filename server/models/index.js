@@ -1,5 +1,5 @@
 const User = require('./User');
 const Match = require('./Match');
-const OneToOneChat = require('./OneToOneChat');
+const Message = require('./Message');
 
-module.exports = { User, Match, OneToOneChat };
+module.exports = { User, Match, Message };
