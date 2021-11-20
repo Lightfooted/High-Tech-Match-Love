@@ -18,6 +18,8 @@ import GithubUsers from './pages/GithubUsers';
 import SwipeProfile from './pages/SwipeProfiles';
 import Chat from './pages/Chat';
 
+import Navbar from './components/Navbar';
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -41,7 +43,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-          <Nav />
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
