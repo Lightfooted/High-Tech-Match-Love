@@ -1,29 +1,41 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Match, Product, Category, Order } = require('../models');
+const { User, Match, PicInfo } = require('../models');
 const { signToken } = require('../utils/auth');
+const cloudinary = require('cloudinary').v2;
 
 const resolvers = {
     Query: {
         user: async (parent, args, context) => {
             if (context.user) {
-                const user = await User.findById(context.user._id).populate('rightSwipes', '_id userName');
+                // right and left swipes arrays populated with only the _id and githubId
+                const user = await User
+                    .findById(context.user._id)
+                    .populate('rightSwipes', '_id githubId')
+                    .populate('leftSwipes', '_id githubId');
 
                 return user;
             }
 
             throw new AuthenticationError('Not logged in');
         },
-        
+
         matches: async (parent, { userId }) => {
             /*
                 WRITE THE CODE
                 return an array of matches that have the userId as either the requester or the requestee
             */
         },
-        
+
         rightSwipes: async (parent, { userId }) => {
-            const user = await User.findById({ _id: userId}).populate('rightSwipes');
+            // returns the array of right swipes with fully populated users
+            const user = await User.findById({ _id: userId }).populate('rightSwipes');
             return user.rightSwipes;
+        },
+
+        leftSwipes: async (parent, { userId }) => {
+            // returns the array of right swipes with fully populated users
+            const user = await User.findbyId({ _id: userId }).populate('leftSwipes');
+            return user.leftSwipes;
         }
     },
 
@@ -62,14 +74,25 @@ const resolvers = {
 
         addRightSwipe: async (parent, { toAdd }, context) => {
             if (context.user) {
-                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { rightSwipes: toAdd } })
-                    .populate('rightSwipes', '_id userName');
+                // right and left swipes arrays populated with only the _id and githubId
+                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { rightSwipes: toAdd } }, { new: true })
+                    .populate('rightSwipes', '_id githubId')
+                    .populate('leftSwipes', '_id githubId');
             }
 
             throw new AuthenticationError('Not logged in');
         },
 
+        addLeftSwipe: async (parent, { toAdd }, context) => {
+            if (context.user) {
+                // right and left swipes arrays populated with only the _id and githubId
+                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { leftSwipes: toAdd } }, { new: true })
+                    .populate('rightSwipes', '_id githubId')
+                    .populate('leftSwipes', '_id githubId');
+            }
 
+            throw new AuthenticationError('Not logged in');
+        },
     }
 };
 
