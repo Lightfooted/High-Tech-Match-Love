@@ -33,6 +33,12 @@ const userSchema = new Schema({
         minlength: 5
     },
 
+    age: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+
     location: {
         type: String,
         required: false

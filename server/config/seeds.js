@@ -33,9 +33,17 @@ db.once('open', async () => {
         bio: 'Is there anything more fun than coding with a companion?',
         password: 'password12345',
         githubId: 'bsteinFAKE',
-        profilePicUrl: `fakeUrl`
     });
 
+    const user4 = await User.create({
+        firstName: 'Brenda',
+        lastName: 'Jean',
+        email: 'fake1@fake.com',
+        location: 'Everywhere',
+        bio: 'Thanks for watching and happy coding!',
+        password: '12345678',
+        githubId: 'bjackels5',
+    });
 
     console.log('users seeded');
 

@@ -20,6 +20,11 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
+            <Link to="/chat">
+              Chat
+            </Link>
+          </li>
+          <li className="mx-1">
             <Link to="/" onClick={() => Auth.logout()}>
               Logout
             </Link>
@@ -48,8 +53,7 @@ function Nav() {
     <header className="flex-row px-1">
         <Link to="/">
         <span className="logo">
-      <a href="/">
-        <img src={Logo} height="40" width="180" alt="text here" /></a>
+        <img src={Logo} height="40" width="180" alt="text here" />
     </span>
         </Link>
       <nav>

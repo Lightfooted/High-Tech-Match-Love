@@ -108,16 +108,6 @@ const resolvers = {
 
             throw new AuthenticationError('Not logged in');
         },
-
-        // saves the profile picture from the passed URL into Cloudinary and then saved the URL returned from Cloudinary to
-        // the users profilePicUrl
-        addProfilePic: async (parent, { picPath }, context) => {
-            if (context.user) {
-                return await User.findByIdAndUpdate(context.user._id, { profilePicUrl: picPath }, { new: true });
-            }
-
-            throw new AuthenticationError('Not logged in');
-        },
     }
 };
 

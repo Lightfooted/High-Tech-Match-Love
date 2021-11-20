@@ -16,6 +16,8 @@ import SelectedUserImage from './components/SelectUserImage';
 import Nav from './components/Nav';
 import GithubUsers from './pages/GithubUsers';
 import SwipeProfile from './pages/SwipeProfiles';
+import Chat from './pages/Chat';
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -48,6 +50,7 @@ function App() {
             <Route exact path="/profile" component={SelectedUserImage} />
             <Route exact path="/gitusers" component={GithubUsers} />
             <Route exact path="/findmatch" component={SwipeProfile} />
+            <Route exact path ="/chat" component={Chat} />
             <Route component={NoMatch} />
           </Switch>
         </div>

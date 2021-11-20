@@ -12,6 +12,7 @@ const typeDefs = gql`
     leftSwipes: [User]
     githubId: String
     profilePicUrl: String
+    age: Int
   }
 
   type Match {
@@ -40,20 +41,19 @@ const typeDefs = gql`
             password: String!, 
             githubId: String!, 
             location: String, 
-            bio: String, 
+            bio: String,
+            age: Int,
             profilePicUrl: String): Auth
     addRightSwipe(toAdd: ID!): User,
     addLeftSwipe(toAdd: ID!): User,
     updateUser( firstName: String, 
                 lastName: String,
-                email: String, 
-                password: String, 
                 location: String, 
                 bio: String, 
-                githubId: String, 
+                githubId: String,
+                age: Int,
                 profilePicUrl: String): User
     login(email: String!, password: String!): Auth
-    addProfilePic(picPath: String!): User
   }
 `;
 

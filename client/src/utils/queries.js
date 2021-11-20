@@ -11,6 +11,7 @@ export const QUERY_USER = gql`
       location
       bio
       profilePicUrl
+      age
       rightSwipes { _id }
       leftSwipes { _id }
     }

@@ -28,14 +28,31 @@ mutation addUser(
         _id
       }
     }
-  }
 `;
 
-export const ADD_PROFILE_PIC = gql`
-    mutation addProfilePic($picPath: String!) {
-        addProfilePic(picPath:$picPath) {
+export const UPDATE_USER = gql`
+    mutation updateUser($firstName: String, $lastName: String, $location: String, $bio: String, $githubId: String, $age: Int, $profilePicUrl: String) {
+        updateUser(firstName: $firstName, lastName: $lastName, location: $location, bio: $bio, githubId: $githubId, age: $age, profilePicUrl: $profilePicUrl) {
+            firstName
+            lastName
+            email
+            githubId
+            location
+            bio
+            age
+            rightSwipes {
+                _id
+                firstName
+                lastName
+            }
+            leftSwipes {
+                _id
+                firstName
+                lastName
+            }
             profilePicUrl
-        }        
+            _id
+        }
     }
 `;
 
