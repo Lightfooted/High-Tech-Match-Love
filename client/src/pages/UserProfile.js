@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 // We will import Apollo Client and utila/queries to grab data for the current logged in user.
-import { QUERY_USER } from '../../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from '../../utils/mutations';
+import { UPDATE_USER } from '../utils/mutations';
 import { WidgetLoader, Widget } from 'react-cloudinary-upload-widget';
-import defaultUserPic from "../../assets/genericuser.png";
+import defaultUserPic from "../assets/genericuser.png";
 
 
 const UserProfile = () => {
