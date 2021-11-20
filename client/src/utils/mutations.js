@@ -28,6 +28,7 @@ mutation addUser(
         _id
       }
     }
+  }
 `;
 
 export const UPDATE_USER = gql`
