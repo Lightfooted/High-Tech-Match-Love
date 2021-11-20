@@ -37,6 +37,7 @@ const typeDefs = gql`
   type Query {
     user: User
     allUsers: [User]
+    allOtherUsers: [User]
     matches(userId: ID): [Match]
     rightSwipes(userId: ID): [User]
     leftSwipes(userId: ID): [User]

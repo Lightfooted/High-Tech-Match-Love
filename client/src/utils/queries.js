@@ -36,6 +36,24 @@ export const QUERY_ALL_USERS = gql`
   }
 `;
 
+export const QUERY_ALL_OTHER_USERS = gql`
+  {
+    allOtherUsers {
+      _id
+      firstName
+      lastName
+      email
+      githubId
+      location
+      bio
+      profilePicUrl
+      age
+      rightSwipes { _id }
+      leftSwipes { _id }
+    }
+  }
+`;
+
 export const QUERY_GITHUB_USER = gql`
   {
       ghUser {

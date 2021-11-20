@@ -19,8 +19,17 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        allUsers: async (parent, args,) => {
+        allUsers: async () => {
             return User.find({});
+        },
+
+        // returns all the users in the database except for the logged in user
+        allOtherUsers: async(parent, args, context) => {
+            if (context.user) {
+                return User.find({"_id": { $ne: context.user._id }});
+            }
+            
+            throw new AuthenticationError('Not logged in');
         },
 
         matches: async (parent, { userId }) => {
@@ -72,10 +81,6 @@ const resolvers = {
             
             throw new AuthenticationError('Not logged in');
         },
-
-
-
-
 
     },
 
