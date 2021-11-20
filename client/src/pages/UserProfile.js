@@ -83,7 +83,7 @@ const UserProfile = () => {
     return (
         <>
             <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50 }}>
-                <img alt='profile-pic' width={'300px'} src={user.profilePicUrl} />
+                <img alt='profile-pic' width={'300px'} src={user.profilePicUrl ? user.profilePicUrl : defaultUserPic} />
             </div>
             <form style={{ marginLeft: 50, marginRight: 50 }} onSubmit={handleFormSubmit}>
                 <div style={{marginTop:10}}>

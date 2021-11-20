@@ -15,6 +15,13 @@ const typeDefs = gql`
     age: Int
   }
 
+  type OneToOneChat {
+      messageAuthor: User
+      messageRecipient: User
+      chatText: String
+      createdAt: String
+  }
+
   type Match {
       requester: User
       requestee: User
@@ -28,9 +35,12 @@ const typeDefs = gql`
 
   type Query {
     user: User
+    allUsers: [User]
     matches(userId: ID): [Match]
     rightSwipes(userId: ID): [User]
     leftSwipes(userId: ID): [User]
+    usersWithChats: [User]
+    chatsWithUser(userId: ID): [OneToOneChat]
   }
 
   type Mutation {

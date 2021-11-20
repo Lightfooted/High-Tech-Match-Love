@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Match, PicInfo } = require('../models');
+const { User, Match, OneToOneChat } = require('../models');
 const { signToken } = require('../utils/auth');
-const cloudinary = require('cloudinary').v2;
+// const cloudinary = require('cloudinary').v2;
 
 const resolvers = {
     Query: {
@@ -17,6 +17,10 @@ const resolvers = {
             }
 
             throw new AuthenticationError('Not logged in');
+        },
+
+        allUsers: async (parent, args,) => {
+            return User.find({});
         },
 
         matches: async (parent, { userId }) => {
@@ -36,7 +40,43 @@ const resolvers = {
             // returns the array of right swipes with fully populated users
             const user = await User.findbyId({ _id: userId }).populate('leftSwipes');
             return user.leftSwipes;
-        }
+        },
+
+        usersWithChats: async (parent, { userId }) => {
+            // returns the array of users with whom the logged in user has messages
+            if (context.user) {
+                const recipients = await OneToOneChat.distinct("messageRecipient", { "messageAuthor": context.user._id });
+                const authors = await OneToOneChat.distinct("messageAuthor", { "messageRecipient": context.user._id });
+                // merge those and remove duplicates
+
+                // const users = do magic here...
+                // return users;
+            }
+
+            throw new AuthenticationError('Not logged in');
+        },
+
+        chatsWithUser: async (parent, { userId }, context) => {
+            // returns an array of messages sent between the logged in user and the userId
+            if (context.user) {
+                const chats = await OneToOneChat.find({
+                    $or: [
+                        { messageAuthor: userId, messageRecipient: context.user._id },
+                        { messageRecipient: userId, messageAuthor: context.user._id }
+                    ]
+                })
+                .populate('messageAuthor')
+                .populate('messageRecipient');
+                return chats;
+            }
+            
+            throw new AuthenticationError('Not logged in');
+        },
+
+
+
+
+
     },
 
     Mutation: {
