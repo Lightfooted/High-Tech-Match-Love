@@ -41,7 +41,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -53,7 +52,6 @@ function App() {
             <Route exact path ="/chat" component={Chat} />
             <Route component={NoMatch} />
           </Switch>
-        </div>
       </Router>
     </ApolloProvider>
   );
