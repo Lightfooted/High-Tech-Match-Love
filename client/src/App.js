@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -19,8 +19,8 @@ import GithubUsers from './pages/GithubUsers';
 import SwipeProfile from './pages/SwipeProfiles';
 import Chat from './pages/Chat';
 import Messages from './pages/Messages';
-
 import Navbar from './components/Navbar';
+import Footer from './components/Footer/Footer';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -57,6 +57,7 @@ function App() {
             <Route exact path ="/messages" component={Messages} />
             <Route component={NoMatch} />
           </Switch>
+          <Footer />
       </Router>
     </ApolloProvider>
   );

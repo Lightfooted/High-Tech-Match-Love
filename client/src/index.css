@@ -281,3 +281,7 @@ img.cover-img {
 .star {
   margin-top: 110px;
 }
+
+.no-match {
+  color: var(--dark);
+}
