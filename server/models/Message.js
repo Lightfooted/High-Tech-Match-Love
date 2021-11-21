@@ -33,10 +33,3 @@ const messageSchema = new Schema({
 const Message = mongoose.model('Message', messageSchema);
 
 module.exports = Message;
-
-
-// db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
-// db.musicians.find( ).sort( { name: 1 } ) 1 is ascending, -1 is descending
-
-// We need to be able to retrieve a list of users with whom a given user has chats available
-// We need to be able to retrieve a chat between two specific users

@@ -3,22 +3,21 @@ import React, { useState } from 'react';
 import { QUERY_ALL_OTHER_USERS } from '../utils/queries';
 import MessageList from '../components/MessageList';
 import { useQuery } from '@apollo/client';
-import { useMutation } from '@apollo/client';
 
 const Messages = () => {
 
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
 
-    const { loading, error } = useQuery(QUERY_ALL_OTHER_USERS, {
+
+    const { loading /*, error */} = useQuery(QUERY_ALL_OTHER_USERS, {   
         fetchPolicy: 'no-cache',
         // onCompleted: data => console.log(JSON.stringify(data.allOtherUsers)),
-        onCompleted: data => setUsers(data.allOtherUsers),
+        onCompleted: data => { console.log(`calling queryallotherusers again`); setUsers(data.allOtherUsers)},
     });
 
-    const refreshMessages = () =>
-    {
-        console.log('refreshMessages');
+    const refreshMessages = () => {
+        console.log('refreshMessages DOES NOT WORK YET');
     }
 
     if (loading) {
@@ -36,13 +35,11 @@ const Messages = () => {
                 {selectedUser && (
                     <>
                         <h3>Here are your messages with {selectedUser.firstName} {selectedUser.lastName}</h3>
-                        <button onClick={() => refreshMessages()} >Refresh</button>
-
                         <MessageList
                             selectedUserId={selectedUser._id}
                         />
+                        <button onClick={() => refreshMessages()} >Refresh</button>
                     </>
-
                 )}
             </div>
         </>

@@ -32,7 +32,7 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        matches: async (parent, { userId }) => {
+        matches: async (parent, { userId }) => {    
             /*
                 WRITE THE CODE
                 return an array of matches that have the userId as either the requester or the requestee
@@ -109,6 +109,7 @@ const resolvers = {
 
             return { token, user };
         },
+
         updateUser: async (parent, args, context) => {
             if (context.user) {
                 return await User.findByIdAndUpdate(context.user._id, args, { new: true });
@@ -138,6 +139,17 @@ const resolvers = {
 
             throw new AuthenticationError('Not logged in');
         },
+
+        addMessage: async (parent, { text, recipient}, context) => {
+            if (context.user) {
+                let message = await Message.create({ text: text, recipient: recipient, author: context.user._id});
+                message = await message.populate('recipient author').execPopulate();
+                
+                return message;
+            }
+
+            throw new AuthenticationError('Not logged in');
+        }
     }
 };
 

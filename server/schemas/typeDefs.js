@@ -65,6 +65,7 @@ const typeDefs = gql`
                 age: Int,
                 profilePicUrl: String): User
     login(email: String!, password: String!): Auth
+    addMessage(text: String!, recipient: ID!) : Message
   }
 `;
 
