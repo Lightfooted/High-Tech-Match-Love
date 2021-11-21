@@ -20,11 +20,7 @@ const UserProfile = () => {
         profilePicUrl: defaultUserPic
     });
 
-<<<<<<< HEAD:client/src/components/SelectUserImage/index.js
-    const { loading } = useQuery(QUERY_USER, {
-=======
     const { loading /*, error */} = useQuery(QUERY_USER, {
->>>>>>> 251bf8e69855910d096ce9a61268c8b76578d01a:client/src/pages/UserProfile.js
         fetchPolicy: 'no-cache',
         onCompleted: data => setUser(data.user),
     });
