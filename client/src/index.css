@@ -88,10 +88,6 @@ a {
   font-weight: bold;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 header {
   background: var(--primary);
 }
@@ -244,6 +240,9 @@ input:focus {
   }
 }
 
+/* NAVBAR STARTS */
+
+/* NAVBAR ENDS */
 
 /* Homepage */
 
