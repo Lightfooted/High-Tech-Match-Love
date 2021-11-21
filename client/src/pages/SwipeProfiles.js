@@ -51,14 +51,15 @@ const SwipeProfile = () => {
     if (!searchInput) return <div>...loading</div>;
     else {
         return (
-
+            <div className="swiper-container">
             <div className="swiper">
                 <p>Login ID: {data[githubIndex].login}, GitHub ID: {data[githubIndex].id} </p>
-                <a href={data[githubIndex].url} >Github Link </a>
-                <img alt='pic' src={data[githubIndex].avatar_url} />
+                <a href={data[githubIndex].url} ></a>
+                <img className='swiper-img' alt='pic' src={data[githubIndex].avatar_url} />
                 <div>
                 <button onClick={ ()=> handleSwipe('dismiss') }>Dismiss</button>
                 <button onClick={ ()=> handleSwipe('save') } >Request Match</button>
+                </div>
                 </div>
             </div>
 
