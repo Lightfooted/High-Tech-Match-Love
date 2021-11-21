@@ -12,23 +12,23 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-    mutation addUser(
-                $firstName: String!, 
-                $lastName: String!,
-                $password: String!, 
-                $email: String!,
-                $githubId: String!) {
-        addUser(firstName:$firstName, lastName: $lastName, password: $password, email: $email, githubId: $githubId) {
-            token
-            user {
-                firstName
-                lastName
-                email
-                githubId
-                _id
-            }
-        }
+mutation addUser(
+  $firstName: String!, 
+  $lastName: String!,
+  $password: String!, 
+  $email: String!,
+  $githubId: String!) {
+    addUser(firstName:$firstName, lastName: $lastName, password: $password, email: $email, githubId: $githubId) {
+      token
+      user {
+        firstName
+        lastName
+        email
+        githubId
+        _id
+      }
     }
+  }
 `;
 
 export const UPDATE_USER = gql`
@@ -57,6 +57,15 @@ export const UPDATE_USER = gql`
     }
 `;
 
+export const ADD_RIGHT_SWIPE = gql`
+  mutation addRightSwipe($toAdd: ID!){
+    addRightSwipe(toAdd: $toAdd){
+      _id
+      firstName
+      lastName
+    }
+  }
+`
 export const ADD_MESSAGE = gql`
     mutation addMessage($text: String!, $recipient: ID!) {
         addMessage(text:$text, recipient: $recipient) {

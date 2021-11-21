@@ -16,7 +16,12 @@ function Nav() {
           </li>
           <li className="mx-1">
             <Link to="/gitusers">
-              Git Users
+              Explore
+            </Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/findmatch">
+              Find-match
             </Link>
           </li>
           <li className="mx-1">

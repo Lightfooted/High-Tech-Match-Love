@@ -19,9 +19,25 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        allUsers: async () => {
-            return User.find({});
+        users: async (parent, args, context) => {
+            // if .user) {
+                // right and left swipes arrays populated with only the _id and githubId
+                const user = await User
+                    .find()
+                    .populate('rightSwipes', '_id githubId')
+                    .populate('leftSwipes', '_id githubId');
+
+                return user;
+            // }
+
+            throw new AuthenticationError('Not logged in');
         },
+
+
+        // matches: async (parent, { userId }) => {
+        // allUsers: async () => {
+        //     return User.find({});
+        // },
 
         // returns all the users in the database except for the logged in user
         allOtherUsers: async(parent, args, context) => {
@@ -32,12 +48,12 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        matches: async (parent, { userId }) => {    
-            /*
-                WRITE THE CODE
-                return an array of matches that have the userId as either the requester or the requestee
-            */
-        },
+        // matches: async (parent, { userId }) => {    
+        //     /*
+        //         WRITE THE CODE
+        //         return an array of matches that have the userId as either the requester or the requestee
+        //     */
+        // },
 
         rightSwipes: async (parent, { userId }) => {
             // returns the array of right swipes with fully populated users

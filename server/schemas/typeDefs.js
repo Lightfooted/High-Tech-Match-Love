@@ -36,6 +36,7 @@ const typeDefs = gql`
 
   type Query {
     user: User
+    users: [User]
     allUsers: [User]
     allOtherUsers: [User]
     matches(userId: ID): [Match]
