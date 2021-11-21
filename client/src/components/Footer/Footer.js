@@ -18,10 +18,31 @@ function Footer () {
                     <FooterLinksContainer>
                 <FooterLinksWrapper>
                     <FooterLinkItems>
-            <FooterLink to='https://github.com/bjackels5'>Brenda Jackels</FooterLink>
-            <FooterLink to='https://github.com/Lightfooted'>Kimberly Collazo</FooterLink>
-            <FooterLink to='https://github.com/brookemadison'>Brooke Madison</FooterLink>
-            <FooterLink to='https://github.com/Padredilg'>Luiz Padredi</FooterLink>
+            <FooterLink href={
+                'https://github.com/bjackels5'
+              }
+              rel='noopener noreferrer'
+              target='_blank'
+              aria-label='Github'
+            >Brenda Jackels</FooterLink>
+            <FooterLink  href={
+                'https://github.com/Lightfooted'
+              }
+              rel='noopener noreferrer'
+              target='_blank'
+              aria-label='Github'>Kimberly Collazo</FooterLink>
+            <FooterLink  href={
+                'https://github.com/brookemadison'
+              }
+              rel='noopener noreferrer'
+              target='_blank'
+              aria-label='Github'>Brooke Madison</FooterLink>
+            <FooterLink  href={
+                'https://github.com/padredilg'
+              }
+              rel='noopener noreferrer'
+              target='_blank'
+              aria-label='Github'>Luiz Padredi</FooterLink>
                  </FooterLinkItems>
                 </FooterLinksWrapper>
             </FooterLinksContainer>
