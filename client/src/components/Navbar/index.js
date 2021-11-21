@@ -123,7 +123,7 @@ const Menu = styled.div`
     }
 `;
 
-const MenuLink = styled.a`
+const MenuLink = styled.div`
     padding: 1rem .8rem;
     transition: all 0.3s ease-in-out;
     font-size: 0.9rem;

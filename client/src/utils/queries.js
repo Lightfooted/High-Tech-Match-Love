@@ -12,8 +12,8 @@ export const QUERY_USER = gql`
       bio
       profilePicUrl
       age
-      rightSwipes { _id }
-      leftSwipes { _id }
+      rightSwipes
+      leftSwipes
     }
   }
 `;
@@ -30,8 +30,8 @@ export const QUERY_ALL_USERS = gql`
       bio
       profilePicUrl
       age
-      rightSwipes { _id }
-      leftSwipes { _id }
+      rightSwipes
+      leftSwipes
     }
   }
 `;
@@ -48,8 +48,8 @@ export const QUERY_ALL_OTHER_USERS = gql`
       bio
       profilePicUrl
       age
-      rightSwipes { _id }
-      leftSwipes { _id }
+      rightSwipes
+      leftSwipes
     }
   }
 `;
@@ -64,8 +64,8 @@ export const QUERY_GITHUB_USER = gql`
         location
         bio
         profilePicUrl
-        rightSwipes { _id }
-        leftSwipes { _id }
+        rightSwipes
+        leftSwipes
       }
   }
 `;
