@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // We will import Apollo Client and utila/queries to grab data for the current logged in user.
 import { QUERY_MESSAGES_WITH_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { ADD_MESSAGE } from '../../utils/mutations';
+
+const AlwaysScrollToBottom = () => {
+    const elementRef = useRef();
+    useEffect(() => elementRef.current.scrollIntoView());
+    return <div ref={elementRef} />;
+};
+
+
 
 const MessageList = ({ selectedUserId }) => {
 
@@ -62,6 +70,8 @@ const MessageList = ({ selectedUserId }) => {
                             <span style={{ color: "orange" }}> at {message.createdAt}</span>
                         </p>
                     ))}
+                    <AlwaysScrollToBottom />
+
                 </ul>
                 <h3>Send a new message:</h3>
                 <form onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
