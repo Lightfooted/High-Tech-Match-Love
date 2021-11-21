@@ -14,6 +14,9 @@ const Navbar = () => {
         if (Auth.loggedIn()) {
             return (
                 <Menu isOpen={isOpen}>
+                    <Link className="my-1" to="/">
+                        <MenuLink>Home</MenuLink>
+                    </Link>
                     <Link className="my-1" to="/profile">
                         <MenuLink>Profile</MenuLink>
                     </Link>
@@ -34,6 +37,9 @@ const Navbar = () => {
         } else {
             return (
                 <Menu isOpen={isOpen}>
+                    <Link className="my-1" to="/">
+                        <MenuLink>Home</MenuLink>
+                    </Link>
                     <Link className="my-1" to="/signup">
                         <MenuLink>Signup</MenuLink>
                     </Link>
@@ -70,7 +76,11 @@ const Nav = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    background: rgba(255,255,255, .4);
+    background: rgba(255,255,255, .5);
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    top: 0;
 `;
 
 const Hamburger = styled.div`
