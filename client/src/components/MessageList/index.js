@@ -4,6 +4,8 @@ import { QUERY_MESSAGES_WITH_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { ADD_MESSAGE } from '../../utils/mutations';
+import ScrollButton from '../ScrollToTop'
+
 
 const AlwaysScrollToBottom = () => {
     const elementRef = useRef();
@@ -18,7 +20,6 @@ const MessageList = ({ selectedUserId }) => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [addMessage] = useMutation(ADD_MESSAGE);
-
 
     const { loading/*, error */ } = useQuery(QUERY_MESSAGES_WITH_USER, {
         variables: { userId: selectedUserId },
@@ -42,10 +43,7 @@ const MessageList = ({ selectedUserId }) => {
                 },
             });
             let t = [...messages, mutationResponse.data.addMessage];
-            console.log(mutationResponse.data.addMessage);
-            console.log(t);
             setMessages(t);
-
         } catch (e) {
             alert(`error while saving user: ${e}`);
         }
@@ -55,7 +53,7 @@ const MessageList = ({ selectedUserId }) => {
         return <div>Loading...</div>;
     }
 
-    if (!messages.length) {
+    if (!messages?.length) {
         return <div>No Messages!</div>
     }
 
@@ -73,14 +71,13 @@ const MessageList = ({ selectedUserId }) => {
                     <AlwaysScrollToBottom />
 
                 </ul>
-                <h3>Send a new message:</h3>
                 <form onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
                     <label>
-                        The Message To Send:
-                        <input type="text" name="text" value={newMessage} onChange={handleFormChange} />
+                        Send a new message: <input type="text" name="text" value={newMessage} style={{ width: 400 }} onChange={handleFormChange} />
                     </label>
                     <input type="submit" value="Submit" style={{ marginTop: 10 }} />
                 </form>
+                <ScrollButton />
             </div>
         </>
     );
