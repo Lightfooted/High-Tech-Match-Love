@@ -12,10 +12,12 @@ import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import SelectedUserImage from './components/SelectUserImage';
+// import SelectedUserImage from './components/SelectUserImage';
+import UserProfile from './pages/UserProfile'
 import Nav from './components/Nav';
 import GithubUsers from './pages/GithubUsers';
 import Chat from './pages/Chat';
+import Messages from './pages/Messages';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,9 +48,10 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile" component={SelectedUserImage} />
+            <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/gitusers" component={GithubUsers} />
             <Route exact path ="/chat" component={Chat} />
+            <Route exact path ="/messages" component={Messages} />
             <Route component={NoMatch} />
           </Switch>
         </div>

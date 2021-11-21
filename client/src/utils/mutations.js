@@ -56,3 +56,23 @@ export const UPDATE_USER = gql`
         }
     }
 `;
+
+export const ADD_MESSAGE = gql`
+    mutation addMessage($text: String!, $recipient: ID!) {
+        addMessage(text:$text, recipient: $recipient) {
+            _id
+            recipient {
+                _id
+                firstName
+                lastName
+            }
+            author {
+                _id
+                firstName
+                lastName
+            }
+            text
+            createdAt
+        }
+    }
+`;

@@ -15,6 +15,14 @@ const typeDefs = gql`
     age: Int
   }
 
+  type Message {
+      _id: ID
+      author: User
+      recipient: User
+      text: String
+      createdAt: String
+  }
+
   type Match {
       requester: User
       requestee: User
@@ -28,9 +36,13 @@ const typeDefs = gql`
 
   type Query {
     user: User
+    allUsers: [User]
+    allOtherUsers: [User]
     matches(userId: ID): [Match]
     rightSwipes(userId: ID): [User]
     leftSwipes(userId: ID): [User]
+    usersWithMessages: [User]
+    messagesWithUser(userId: ID): [Message]
   }
 
   type Mutation {
@@ -53,6 +65,7 @@ const typeDefs = gql`
                 age: Int,
                 profilePicUrl: String): User
     login(email: String!, password: String!): Auth
+    addMessage(text: String!, recipient: ID!) : Message
   }
 `;
 
