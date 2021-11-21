@@ -49,19 +49,8 @@ const userSchema = new Schema({
         required: false
     },
 
-    rightSwipes: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    ],
-
-    leftSwipes: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    ],
+    rightSwipes: [ String ],
+    leftSwipes: [ String ],
 
     profilePicUrl: {
         type: String,
