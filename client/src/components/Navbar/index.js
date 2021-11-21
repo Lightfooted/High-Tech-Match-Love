@@ -7,12 +7,13 @@ import styled from 'styled-components';
 
 
 const Navbar = () => {
-    
+    const [isOpen, setIsOpen] = useState(false);
+
 
     function showNavigation() {
         if (Auth.loggedIn()) {
             return (
-                <Menu>
+                <Menu isOpen={isOpen}>
                     <Link className="my-1" to="/profile">
                         <MenuLink>Profile</MenuLink>
                     </Link>
@@ -32,7 +33,7 @@ const Navbar = () => {
             );
         } else {
             return (
-                <Menu>
+                <Menu isOpen={isOpen}>
                     <Link className="my-1" to="/signup">
                         <MenuLink>Signup</MenuLink>
                     </Link>
@@ -51,7 +52,7 @@ const Navbar = () => {
                     <img src={Logo} height="40" width="180" alt="text here" />
                 </span>
             </Link>
-            <Hamburger>
+            <Hamburger onClick={ ()=>setIsOpen(!isOpen) }>
                 <span />
                 <span />
                 <span />
@@ -69,7 +70,7 @@ const Nav = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    background: none;
+    background: rgba(255,255,255, .4);
 `;
 
 const Hamburger = styled.div`
@@ -78,7 +79,7 @@ const Hamburger = styled.div`
     padding-top: .75rem;
 
     span{
-        height: 2.5px;
+        height: 2px;
         width: 25px;
         background: #2C6975;
         margin-bottom: 4px;
@@ -102,11 +103,13 @@ const Menu = styled.div`
     justify-content: space-between;
     align-items: center;
     position: relative;
+    transition: all .6s ease-in-out;
 
     @media (max-width:768px){
         overflow: hidden;
         flex-direction: column;
         width: 100%;
+        max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
     }
 `;
 
