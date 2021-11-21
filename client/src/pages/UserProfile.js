@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 // We will import Apollo Client and utila/queries to grab data for the current logged in user.
-import { QUERY_USER } from '../../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from '../../utils/mutations';
+import { UPDATE_USER } from '../utils/mutations';
 import { WidgetLoader, Widget } from 'react-cloudinary-upload-widget';
-import defaultUserPic from "../../assets/genericuser.png";
+import defaultUserPic from "../assets/genericuser.png";
 
 
 const UserProfile = () => {
@@ -20,7 +20,7 @@ const UserProfile = () => {
         profilePicUrl: defaultUserPic
     });
 
-    const { loading } = useQuery(QUERY_USER, {
+    const { loading /*, error */} = useQuery(QUERY_USER, {
         fetchPolicy: 'no-cache',
         onCompleted: data => setUser(data.user),
     });
@@ -83,7 +83,7 @@ const UserProfile = () => {
     return (
         <>
             <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50 }}>
-                <img alt='profile-pic' width={'300px'} src={user.profilePicUrl} />
+                <img alt='profile-pic' width={'300px'} src={user.profilePicUrl ? user.profilePicUrl : defaultUserPic} />
             </div>
             <form style={{ marginLeft: 50, marginRight: 50 }} onSubmit={handleFormSubmit}>
                 <div style={{marginTop:10}}>

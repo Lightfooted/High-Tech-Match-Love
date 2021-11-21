@@ -29,6 +29,8 @@ const GitUsers = () => {
         // const pageNum = randomNumber(1, 30000000);
         // return `https://api.github.com/search/users?q=type%3Ausa&per_page=100&page=${pageNum}`
     }
+    
+    const [githubIndex, setGithubIndex] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -60,9 +62,10 @@ const GitUsers = () => {
     else {
         return (
             <div className="GitUsers">
-                <h1>List of {data.length || 0} users:</h1>
+                {/* <h1>List of {data.length || 0} users:</h1> */}
+                <h1>Explore github users:</h1>
                 {data.map((user) => (
-                    <div>
+                    <div key={user.id}>
                         <p>Login ID: {user.login}, GitHub ID: {user.id} </p>
                         <a href={user.url} >Github Link </a>
                         <img alt='pic' src={user.avatar_url} />

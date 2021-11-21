@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Match } = require('../models');
+const { User, Match, Message } = require('../models');
 
 db.once('open', async () => {
 
@@ -46,6 +46,16 @@ db.once('open', async () => {
     });
 
     console.log('users seeded');
+
+    await Message.deleteMany();
+
+    await Message.create({
+        author: user4._id,
+        recipient: user3._id,
+        text: 'a message from Brenda to Billy',
+    });
+
+    console.log('messages seeded');
 
     process.exit();
 });

@@ -20,7 +20,7 @@ body {
 }
 
 body {
-  margin: 0;
+  margin: 100px 0 0 0;
   padding: 0;
   font-family: 'HKGroteskRegular';
   line-height: 1.5;
@@ -86,10 +86,6 @@ a {
   color: var(--tertiary);
   text-decoration: none;
   font-weight: bold;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 header {
@@ -244,6 +240,9 @@ input:focus {
   }
 }
 
+/* NAVBAR STARTS */
+
+/* NAVBAR ENDS */
 
 /* Homepage */
 

@@ -12,10 +12,15 @@ import Home from './pages/Home/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import SelectedUserImage from './components/SelectUserImage';
+// import SelectedUserImage from './components/SelectUserImage';
+import UserProfile from './pages/UserProfile'
 import Nav from './components/Nav';
 import GithubUsers from './pages/GithubUsers';
+import SwipeProfile from './pages/SwipeProfiles';
 import Chat from './pages/Chat';
+import Messages from './pages/Messages';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer/Footer';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,18 +45,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <Nav />
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile" component={SelectedUserImage} />
+            <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/gitusers" component={GithubUsers} />
+            <Route exact path="/findmatch" component={SwipeProfile} />
             <Route exact path ="/chat" component={Chat} />
+            <Route exact path ="/messages" component={Messages} />
             <Route component={NoMatch} />
           </Switch>
-        </div>
+          <Footer />
       </Router>
     </ApolloProvider>
   );
