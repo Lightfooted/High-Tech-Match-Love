@@ -19,7 +19,6 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-<<<<<<< HEAD
         users: async (parent, args, context) => {
             // if .user) {
                 // right and left swipes arrays populated with only the _id and githubId
@@ -35,11 +34,10 @@ const resolvers = {
         },
 
 
-        matches: async (parent, { userId }) => {
-=======
-        allUsers: async () => {
-            return User.find({});
-        },
+        // matches: async (parent, { userId }) => {
+        // allUsers: async () => {
+        //     return User.find({});
+        // },
 
         // returns all the users in the database except for the logged in user
         allOtherUsers: async(parent, args, context) => {
@@ -50,13 +48,12 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        matches: async (parent, { userId }) => {    
->>>>>>> 251bf8e69855910d096ce9a61268c8b76578d01a
-            /*
-                WRITE THE CODE
-                return an array of matches that have the userId as either the requester or the requestee
-            */
-        },
+        // matches: async (parent, { userId }) => {    
+        //     /*
+        //         WRITE THE CODE
+        //         return an array of matches that have the userId as either the requester or the requestee
+        //     */
+        // },
 
         rightSwipes: async (parent, { userId }) => {
             // returns the array of right swipes with fully populated users
