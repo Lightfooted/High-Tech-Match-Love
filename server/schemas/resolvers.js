@@ -7,11 +7,7 @@ const resolvers = {
     Query: {
         user: async (parent, args, context) => {
             if (context.user) {
-                // right and left swipes arrays populated with only the _id and githubId
-                const user = await User
-                    .findById(context.user._id)
-                    .populate('rightSwipes', '_id githubId')
-                    .populate('leftSwipes', '_id githubId');
+                const user = await User.findById(context.user._id);
 
                 return user;
             }
@@ -20,15 +16,9 @@ const resolvers = {
         },
 
         users: async (parent, args, context) => {
-            // if .user) {
-                // right and left swipes arrays populated with only the _id and githubId
-                const user = await User
-                    .find()
-                    .populate('rightSwipes', '_id githubId')
-                    .populate('leftSwipes', '_id githubId');
+                const user = await User.find();
 
                 return user;
-            // }
 
             throw new AuthenticationError('Not logged in');
         },
@@ -55,15 +45,13 @@ const resolvers = {
         //     */
         // },
 
-        rightSwipes: async (parent, { userId }) => {
-            // returns the array of right swipes with fully populated users
-            const user = await User.findById({ _id: userId }).populate('rightSwipes');
+        getRightSwipes: async (parent, { userId }) => {
+            const user = await User.findById({ _id: userId });
             return user.rightSwipes;
         },
 
-        leftSwipes: async (parent, { userId }) => {
-            // returns the array of right swipes with fully populated users
-            const user = await User.findbyId({ _id: userId }).populate('leftSwipes');
+        getLeftSwipes: async (parent, { userId }) => {
+            const user = await User.findbyId({ _id: userId });
             return user.leftSwipes;
         },
 
@@ -136,10 +124,7 @@ const resolvers = {
 
         addRightSwipe: async (parent, { toAdd }, context) => {
             if (context.user) {
-                // right and left swipes arrays populated with only the _id and githubId
-                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { rightSwipes: toAdd } }, { new: true })
-                    .populate('rightSwipes', '_id githubId')
-                    .populate('leftSwipes', '_id githubId');
+                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { rightSwipes: toAdd } }, { new: true });
             }
 
             throw new AuthenticationError('Not logged in');
@@ -147,10 +132,7 @@ const resolvers = {
 
         addLeftSwipe: async (parent, { toAdd }, context) => {
             if (context.user) {
-                // right and left swipes arrays populated with only the _id and githubId
-                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { leftSwipes: toAdd } }, { new: true })
-                    .populate('rightSwipes', '_id githubId')
-                    .populate('leftSwipes', '_id githubId');
+                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { leftSwipes: toAdd } }, { new: true });
             }
 
             throw new AuthenticationError('Not logged in');
