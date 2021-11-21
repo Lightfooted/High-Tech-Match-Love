@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { randomNumber } from '../utils/random';
+import styled from 'styled-components'
 
 const GitUsers = () => {
     const [data, setData] = useState([]);
@@ -61,19 +62,48 @@ const GitUsers = () => {
     if (!searchInput) return <div>...loading</div>;
     else {
         return (
-            <div className="GitUsers">
+            <OuterContainer className="GitUsers">
                 {/* <h1>List of {data.length || 0} users:</h1> */}
                 <h1>Explore github users:</h1>
-                {data.map((user) => (
-                    <div key={user.id}>
-                        <p>Login ID: {user.login}, GitHub ID: {user.id} </p>
-                        <a href={user.url} >Github Link </a>
-                        <img alt='pic' src={user.avatar_url} />
-                    </div>
-                ))
-                }
-            </div>
+                
+                <InnerContainer>
+                    {data.map((user) => (
+                        <Individual key={user.id}>
+                            <p>Login ID: {user.login}, GitHub ID: {user.id} </p>
+                            <a href={user.url} >Github Link </a>
+                            <img alt='pic' src={user.avatar_url} />
+                        </Individual>
+                    ))}
+                </InnerContainer>
+
+
+            </OuterContainer>
         );
     }
 };
+
+const OuterContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0px 1rem;
+`
+const InnerContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+`
+const Individual = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: black;
+    width: 150px;
+    margin: 10px 10px;
+
+    @media (max-width:512px){
+        width: 25%;
+    }
+`
+
 export default GitUsers;
