@@ -33,7 +33,7 @@ function Login(props) {
     <div>
       <Link className="login" to="/signup">← Go to Signup</Link>
       <h2 className="login-title">One of us?</h2>
-      <p style={{textAlign:'center'}}>If you already has an account, just sign in. We've missed you!</p>
+      <p style={{textAlign:'center'}}>If you already have an account, just sign in. We've missed you!</p>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email address:</label>
