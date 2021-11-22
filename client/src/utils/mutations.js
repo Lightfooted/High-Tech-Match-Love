@@ -41,16 +41,8 @@ export const UPDATE_USER = gql`
             location
             bio
             age
-            rightSwipes {
-                _id
-                firstName
-                lastName
-            }
-            leftSwipes {
-                _id
-                firstName
-                lastName
-            }
+            rightSwipes
+            leftSwipes
             profilePicUrl
             _id
         }
@@ -58,7 +50,7 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_RIGHT_SWIPE = gql`
-  mutation addRightSwipe($toAdd: ID!){
+  mutation addRightSwipe($toAdd: String!){
     addRightSwipe(toAdd: $toAdd){
       _id
       firstName
@@ -66,3 +58,22 @@ export const ADD_RIGHT_SWIPE = gql`
     }
   }
 `
+export const ADD_MESSAGE = gql`
+    mutation addMessage($text: String!, $recipient: ID!) {
+        addMessage(text:$text, recipient: $recipient) {
+            _id
+            recipient {
+                _id
+                firstName
+                lastName
+            }
+            author {
+                _id
+                firstName
+                lastName
+            }
+            text
+            createdAt
+        }
+    }
+`;

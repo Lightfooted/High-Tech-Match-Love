@@ -20,7 +20,7 @@ body {
 }
 
 body {
-  margin: 0;
+  margin: 100px 0 0 0;
   padding: 0;
   font-family: 'HKGroteskRegular';
   line-height: 1.5;
@@ -88,10 +88,6 @@ a {
   font-weight: bold;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 header {
   background: var(--primary);
 }
@@ -103,18 +99,25 @@ header a {
 /* buttons */
 
 .btn-container {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
   width: 300px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 100vh; */
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 50px;
+  padding-left: 50px;
 }
 
 button {
-  font-size: 1rem;
+  /* font-size: 1rem;
   text-decoration: none;
   border: none;
   outline: none;
@@ -126,17 +129,32 @@ button {
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: var(--dark);
+  color: var(--dark); */
  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
-  box-shadow: 0 0 20px #eee;
+  /* box-shadow: 0 0 20px #eee;
   border-radius: 50px;
-  background-image: linear-gradient(to right, #68B2A0 0%, #E0ECDE 51%, #68B2A0 100%);
+  background-image: linear-gradient(to right, #68B2A0 0%, #E0ECDE 51%, #68B2A0 100%); */
+  border-radius: 4px;
+  background-color: var(--secondary);
+  color: var(--light);
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 64px;
+  font-size: 20px;
+  justify-content:space-between;
+  margin: 25px 5px;
 }
 
 /* changes the direction of the background on hover */
 button:hover {
-  background-position: right center; 
+  /* background-position: right center;  */
+  transition: all 0.3s ease-out;
+  background-color: var(--dark);
+  color: var(--light);
 }
+
 
 button[disabled] {
   cursor: default;
@@ -244,6 +262,9 @@ input:focus {
   }
 }
 
+/* NAVBAR STARTS */
+
+/* NAVBAR ENDS */
 
 /* Homepage */
 
@@ -281,4 +302,110 @@ img.cover-img {
 
 .star {
   margin-top: 110px;
+}
+
+.no-match {
+  color: var(--dark);
+}
+
+
+/* Find Match Page */
+
+.swiper-container {
+margin-top: 150px;
+margin-bottom: 120px;
+justify-content: center;
+align-content: center;
+text-align: center;
+}
+
+.swiper-img {
+  border-radius: 510px 510px 0 0;
+  width: 300px;
+  height: 300px;
+}
+
+/* Chat Page */
+.App {
+  margin: 420px
+}
+
+/* Profile Page */
+
+.user-profile-container {
+  text-align: center;
+}
+
+
+form{
+  background: var(--primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 30px 50px;
+}
+
+input {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+}
+
+textarea {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+}
+
+label {
+  color: var(--dark);
+  display: block;
+  font-family: 'HKGroteskRegular';
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.profile-submit {
+  border-radius: 4px;
+  background-color: var(--secondary);
+  color: var(--light);
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 64px;
+  font-size: 20px;
+  justify-content:space-between;
+  margin: 25px 5px;
+}
+
+.profile-submit:hover {
+  transition: all 0.3s ease-out;
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+.upload-profile-pic {
+  border-radius: 4px;
+  background-color: var(--secondary);
+  color: var(--light);
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 64px;
+  font-size: 20px;
+}
+
+.upload-profile-pic :hover {
+  transition: all 0.3s ease-out;
+  background-color: var(--dark);
+  color: var(--light);
 }

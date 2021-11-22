@@ -1,17 +1,13 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Match, PicInfo } = require('../models');
+const { User, Match, Message } = require('../models');
 const { signToken } = require('../utils/auth');
-const cloudinary = require('cloudinary').v2;
+// const cloudinary = require('cloudinary').v2;
 
 const resolvers = {
     Query: {
         user: async (parent, args, context) => {
             if (context.user) {
-                // right and left swipes arrays populated with only the _id and githubId
-                const user = await User
-                    .findById(context.user._id)
-                    .populate('rightSwipes', '_id githubId')
-                    .populate('leftSwipes', '_id githubId');
+                const user = await User.findById(context.user._id);
 
                 return user;
             }
@@ -20,38 +16,76 @@ const resolvers = {
         },
 
         users: async (parent, args, context) => {
-            // if .user) {
-                // right and left swipes arrays populated with only the _id and githubId
-                const user = await User
-                    .find()
-                    .populate('rightSwipes', '_id githubId')
-                    .populate('leftSwipes', '_id githubId');
+                const user = await User.find();
 
                 return user;
-            // }
 
             throw new AuthenticationError('Not logged in');
         },
 
 
-        matches: async (parent, { userId }) => {
-            /*
-                WRITE THE CODE
-                return an array of matches that have the userId as either the requester or the requestee
-            */
+        // matches: async (parent, { userId }) => {
+        // allUsers: async () => {
+        //     return User.find({});
+        // },
+
+        // returns all the users in the database except for the logged in user
+        allOtherUsers: async(parent, args, context) => {
+            if (context.user) {
+                return User.find({"_id": { $ne: context.user._id }});
+            }
+            
+            throw new AuthenticationError('Not logged in');
         },
 
-        rightSwipes: async (parent, { userId }) => {
-            // returns the array of right swipes with fully populated users
-            const user = await User.findById({ _id: userId }).populate('rightSwipes');
+        // matches: async (parent, { userId }) => {    
+        //     /*
+        //         WRITE THE CODE
+        //         return an array of matches that have the userId as either the requester or the requestee
+        //     */
+        // },
+
+        getRightSwipes: async (parent, { userId }) => {
+            const user = await User.findById({ _id: userId });
             return user.rightSwipes;
         },
 
-        leftSwipes: async (parent, { userId }) => {
-            // returns the array of right swipes with fully populated users
-            const user = await User.findbyId({ _id: userId }).populate('leftSwipes');
+        getLeftSwipes: async (parent, { userId }) => {
+            const user = await User.findbyId({ _id: userId });
             return user.leftSwipes;
-        }
+        },
+
+        usersWithMessages: async (parent, { userId }) => {
+            // returns the array of users with whom the logged in user has messages
+            if (context.user) {
+                const recipients = await Message.distinct("recipient", { "author": context.user._id });
+                const authors = await Message.distinct("author", { "recipient": context.user._id });
+                // merge those and remove duplicates
+
+                // const users = do magic here...
+                // return users;
+            }
+
+            throw new AuthenticationError('Not logged in');
+        },
+
+        messagesWithUser: async (parent, { userId }, context) => {
+            // returns an array of messages sent between the logged in user and the userId
+            if (context.user) {
+                const messages = await Message.find({
+                    $or: [
+                        { author: userId, recipient: context.user._id },
+                        { recipient: userId, author: context.user._id }
+                    ]
+                })
+                .populate('author')
+                .populate('recipient');
+                return messages;
+            }
+            
+            throw new AuthenticationError('Not logged in');
+        },
+
     },
 
     Mutation: {
@@ -79,6 +113,7 @@ const resolvers = {
 
             return { token, user };
         },
+
         updateUser: async (parent, args, context) => {
             if (context.user) {
                 return await User.findByIdAndUpdate(context.user._id, args, { new: true });
@@ -89,10 +124,7 @@ const resolvers = {
 
         addRightSwipe: async (parent, { toAdd }, context) => {
             if (context.user) {
-                // right and left swipes arrays populated with only the _id and githubId
-                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { rightSwipes: toAdd } }, { new: true })
-                    .populate('rightSwipes', '_id githubId')
-                    .populate('leftSwipes', '_id githubId');
+                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { rightSwipes: toAdd } }, { new: true });
             }
 
             throw new AuthenticationError('Not logged in');
@@ -100,14 +132,22 @@ const resolvers = {
 
         addLeftSwipe: async (parent, { toAdd }, context) => {
             if (context.user) {
-                // right and left swipes arrays populated with only the _id and githubId
-                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { leftSwipes: toAdd } }, { new: true })
-                    .populate('rightSwipes', '_id githubId')
-                    .populate('leftSwipes', '_id githubId');
+                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { leftSwipes: toAdd } }, { new: true });
             }
 
             throw new AuthenticationError('Not logged in');
         },
+
+        addMessage: async (parent, { text, recipient}, context) => {
+            if (context.user) {
+                let message = await Message.create({ text: text, recipient: recipient, author: context.user._id});
+                message = await message.populate('recipient author').execPopulate();
+                
+                return message;
+            }
+
+            throw new AuthenticationError('Not logged in');
+        }
     }
 };
 
