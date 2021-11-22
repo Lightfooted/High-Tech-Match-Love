@@ -65,12 +65,13 @@ const GitUsers = () => {
             <OuterContainer className="GitUsers">
                 {/* <h1>List of {data.length || 0} users:</h1> */}
                 <h1>Explore github users:</h1>
+                <button>Refresh Results</button>
                 
                 <InnerContainer>
                     {data.map((user) => (
                         <Individual key={user.id}>
                             <p>Login ID: {user.login}, GitHub ID: {user.id} </p>
-                            <a href={user.url} >Github Link </a>
+                            <div>Github Link </div>
                             <img alt='pic' src={user.avatar_url} />
                         </Individual>
                     ))}
@@ -92,6 +93,8 @@ const InnerContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 `
 const Individual = styled.div`
     display: flex;
@@ -100,6 +103,7 @@ const Individual = styled.div`
     background-color: black;
     width: 150px;
     margin: 10px 10px;
+    align-items: center;
 
     @media (max-width:512px){
         width: 25%;
