@@ -35,7 +35,7 @@ function Login(props) {
       <h2 className="login-title">One of us?</h2>
       <p style={{textAlign:'center'}}>If you already have an account, just sign in. We've missed you!</p>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+        <div>
           <label htmlFor="email">Email address:</label>
           <input
             name="email"
@@ -44,7 +44,7 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div>
           <label htmlFor="pwd">Password:</label>
           <input
             name="password"
@@ -58,7 +58,7 @@ function Login(props) {
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
         ) : null}
-        <div className="flex-row flex-end">
+        <div className="login-btn" >
           <button type="submit">Submit</button>
         </div>
       </form>

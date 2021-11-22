@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '../globalStyles';
 import StarLogo from "../assets/star.png";
 import HeroImage from "../assets/homepage-img.png";
+
 
 function HeroSection() {
   return (
@@ -12,7 +12,7 @@ function HeroSection() {
       <div className='btn-container'>
         <button>
             Find Your Love Match
-        </button>
+        </button>    
         </div>
         <img src={StarLogo} height="40" width="40" alt="star logo"
         style={{

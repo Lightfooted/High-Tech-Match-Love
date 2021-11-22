@@ -306,6 +306,11 @@ text-align: center;
   height: 300px;
 }
 
+.widget {
+  justify-content: center;
+  text-align: center;
+  }
+
 /* Chat Page */
 .App {
   margin: 420px
@@ -317,16 +322,15 @@ text-align: center;
   text-align: center;
 }
 
-
 form{
   background: var(--primary);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   margin: 0 auto;
-  max-width: 500px;
-  padding: 30px 50px;
+  max-width: 400px;
 }
+
 
 input {
   border: 1px solid #d9d9d9;
@@ -391,7 +395,6 @@ label {
   color: var(--light);
 }
 
-<<<<<<< HEAD
 /* Signup Page */
 
 .login {
@@ -404,15 +407,23 @@ label {
   color: var(--dark);
 }
 
+.signup-btn {
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
 /* Login Page */
 
 .login-title {
   text-align: center;
   font-size: 50px;
   color: var(--dark);
-=======
-.widget {
-justify-content: center;
-text-align: center;
->>>>>>> b783dd6a79f1b30ad9151b4da4bce23d45d516ae
 }
+
+.login-btn {
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
