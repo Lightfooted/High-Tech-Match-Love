@@ -8,18 +8,11 @@ const typeDefs = gql`
     email: String
     location: String
     bio: String
-    chat: [Chat]
     rightSwipes: [User]
     leftSwipes: [User]
     githubId: String
     profilePicUrl: String
     age: Int
-  }
-
-  type Chat {
-    _id: ID!
-    text: String!
-    user: User
   }
 
   type Match {
@@ -35,8 +28,6 @@ const typeDefs = gql`
 
   type Query {
     user: User
-    users (id: ID!): User
-    chats: [Chat]
     matches(userId: ID): [Match]
     rightSwipes(userId: ID): [User]
     leftSwipes(userId: ID): [User]
@@ -62,11 +53,7 @@ const typeDefs = gql`
                 age: Int,
                 profilePicUrl: String): User
     login(email: String!, password: String!): Auth
-    sendChat(text: String!, user: String): Chat
   }
 `;
-
-
-
 
 module.exports = typeDefs;
