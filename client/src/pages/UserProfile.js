@@ -19,7 +19,7 @@ const UserProfile = () => {
         profilePicUrl: defaultUserPic
     });
 
-    const { loading /*, error */} = useQuery(QUERY_USER, {
+    const { loading , error } = useQuery(QUERY_USER, {
         fetchPolicy: 'no-cache',
         onCompleted: data => setUser(data.user),
     });
@@ -84,6 +84,30 @@ const UserProfile = () => {
             <div className="user-profile-container">
                 <img alt='profile-pic' width={'300px'} src={user.profilePicUrl ? user.profilePicUrl : defaultUserPic} />
             </div>
+            <div className="widget">
+            <WidgetLoader />
+            <Widget
+                sources={['local']}
+                resourceType={'image'}
+                cloudName={'htmlove'}
+                uploadPreset={'cuvud7q0'}
+                buttonText={'Edit Profile Picture'}
+                style={{
+                    fontSize: '20px',
+                    color: 'white',
+                    borderRadius: '4px',
+                    border: 'none',
+                    padding: '12px 15px',
+                }}
+                folder={'htmloveprofilepics'}
+                cropping={false}
+                onSuccess={handleProfilePicUpdate}
+                onFailure={handleProfilePicUpdateFailure}
+                logging={true}
+                eager={'w_400,h_300,c_pad|w_260,h_200,c_crop'}
+                use_filename={false}
+            />
+            </div>
             <form onSubmit={handleFormSubmit}>
                 <div>
                     <label>
@@ -124,31 +148,7 @@ const UserProfile = () => {
                 <input className="profile-submit" type="submit" value="Submit"/>
             </form>
 
-            <WidgetLoader />
-            <Widget
-                sources={['local']}
-                resourceType={'image'}
-                cloudName={'htmlove'}
-                uploadPreset={'cuvud7q0'}
-                buttonText={'Upload Profile Picture'}
-                style={{
-                    fontSize: '20px',
-                    color: 'white',
-                    backgroundColor: '#68B2A0',
-                    borderRadius: '4px',
-                    border: 'none',
-                    padding: '12px 64px',
-                                        
-                }}
-                folder={'htmloveprofilepics'}
-                cropping={false}
-                onSuccess={handleProfilePicUpdate}
-                onFailure={handleProfilePicUpdateFailure}
-                logging={true}
-                eager={'w_400,h_300,c_pad|w_260,h_200,c_crop'}
-                use_filename={false}
-
-            />
+        
         </>
     );
 };

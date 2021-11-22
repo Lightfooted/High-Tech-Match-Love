@@ -18,13 +18,14 @@ function Footer () {
                     <FooterLinksContainer>
                 <FooterLinksWrapper>
                     <FooterLinkItems>
-            <FooterLink href={
+            <FooterLink
+            href=
                 'https://github.com/bjackels5'
-              }
               rel='noopener noreferrer'
               target='_blank'
-              aria-label='Github'
-            >Brenda Jackels</FooterLink>
+              aria-label='Github'>
+              Brenda Jackels
+              </FooterLink>
             <FooterLink  href={
                 'https://github.com/Lightfooted'
               }

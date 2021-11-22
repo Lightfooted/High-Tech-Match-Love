@@ -14,7 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import SelectedUserImage from './components/SelectUserImage';
 import UserProfile from './pages/UserProfile'
-import Nav from './components/Nav';
+// import Nav from './components/Nav';
 import GithubUsers from './pages/GithubUsers';
 import SwipeProfile from './pages/SwipeProfiles';
 import Chat from './pages/Chat';
