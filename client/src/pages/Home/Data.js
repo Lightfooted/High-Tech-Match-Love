@@ -3,8 +3,10 @@ export const homeObjOne = {
     lightBg: false,
     lightTopLine: true,
     lightText: true,
-    lightTextDesc: true,
+    lightTextDesc: false,
     headline: 'Make the first move.',
+    description:
+      "Start meeting new people in your area! If you already have an account, sign in.",
     buttonLabel: 'LOGIN / SIGNUP',
     imgStart: '',
     img: require('../../assets/cover-img.png'),
