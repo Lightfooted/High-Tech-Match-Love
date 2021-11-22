@@ -60,6 +60,9 @@ const GitUsers = () => {
         fetchData();
     }, []);
 
+    //uncomment to check all properties of data/user on dev tools console
+    console.log(data[githubIndex])
+
     if (!searchInput) return <div>...loading</div>;
     else {
         return (
@@ -73,12 +76,12 @@ const GitUsers = () => {
                         <Individual key={user.id}>
                             {/* {console.log({user})} */}
                             <img alt='pic' src={user.avatar_url} />
-                            <p>Login ID: {user.login}, GitHub ID: {user.id} </p>
-                            {/* <Link to={user.url}>Github Link </Link> */}
-                            <Link to={{ pathname: user.url }} target="_blank"> Github Link </Link>
+
+                            <p>{user.login}</p> 
+                            <Link to={{ pathname: user.html_url }} target="_blank"> Github Link </Link>
                             
                         </Individual>
-                    ))}]
+                    ))}
                 </InnerContainer>
 
 

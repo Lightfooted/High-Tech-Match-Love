@@ -17,9 +17,6 @@ html,
 body {
   min-height: 100%;
   background-color: var(--primary);
-}
-
-body {
   margin: 100px 0 0 0;
   padding: 0;
   font-family: 'HKGroteskRegular';
@@ -391,7 +388,6 @@ label {
   color: var(--light);
 }
 
-<<<<<<< HEAD
 /* Signup Page */
 
 .login {
@@ -410,9 +406,9 @@ label {
   text-align: center;
   font-size: 50px;
   color: var(--dark);
-=======
+}
+
 .widget {
 justify-content: center;
 text-align: center;
->>>>>>> b783dd6a79f1b30ad9151b4da4bce23d45d516ae
 }
