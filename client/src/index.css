@@ -324,3 +324,88 @@ text-align: center;
   width: 300px;
   height: 300px;
 }
+
+/* Chat Page */
+.App {
+  margin: 420px
+}
+
+/* Profile Page */
+
+.user-profile-container {
+  text-align: center;
+}
+
+
+form{
+  background: var(--primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 30px 50px;
+}
+
+input {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+}
+
+textarea {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+}
+
+label {
+  color: var(--dark);
+  display: block;
+  font-family: 'HKGroteskRegular';
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.profile-submit {
+  border-radius: 4px;
+  background-color: var(--secondary);
+  color: var(--light);
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 64px;
+  font-size: 20px;
+  justify-content:space-between;
+  margin: 25px 5px;
+}
+
+.profile-submit:hover {
+  transition: all 0.3s ease-out;
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+.upload-profile-pic {
+  border-radius: 4px;
+  background-color: var(--secondary);
+  color: var(--light);
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 64px;
+  font-size: 20px;
+}
+
+.upload-profile-pic :hover {
+  transition: all 0.3s ease-out;
+  background-color: var(--dark);
+  color: var(--light);
+}
