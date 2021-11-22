@@ -409,3 +409,23 @@ label {
   background-color: var(--dark);
   color: var(--light);
 }
+
+/* Signup Page */
+
+.login {
+  margin-left: 20px;
+}
+
+.signup-title {
+  text-align: center;
+  font-size: 50px;
+  color: var(--dark);
+}
+
+/* Login Page */
+
+.login-title {
+  text-align: center;
+  font-size: 50px;
+  color: var(--dark);
+}

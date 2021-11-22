@@ -37,15 +37,15 @@ function Signup(props) {
     };
 
     return (
-        <div className="container my-1">
-            <Link to="/login">← Go to Login</Link>
+        <div>
+            <Link className="login" to="/login">← Go to Login</Link>
 
-            <h2>Signup</h2>
+            <h2 className="signup-title">New here?</h2>
+            <p style={{textAlign:'center'}}>Sign up and find your high tech love match!</p>
             <form onSubmit={handleFormSubmit}>
                 <div className="flex-row space-between my-2">
                     <label htmlFor="firstName">First Name:</label>
                     <input
-                        placeholder="First"
                         name="firstName"
                         type="firstName"
                         id="firstName"
@@ -55,7 +55,6 @@ function Signup(props) {
                 <div className="flex-row space-between my-2">
                     <label htmlFor="lastName">Last Name:</label>
                     <input
-                        placeholder="Last"
                         name="lastName"
                         type="lastName"
                         id="lastName"
@@ -65,7 +64,6 @@ function Signup(props) {
                 <div className="flex-row space-between my-2">
                     <label htmlFor="email">Email:</label>
                     <input
-                        placeholder="youremail@test.com"
                         name="email"
                         type="email"
                         id="email"
@@ -75,7 +73,6 @@ function Signup(props) {
                 <div className="flex-row space-between my-2">
                     <label htmlFor="githubId">GitHub ID:</label>
                     <input
-                        placeholder="githubid"
                         name="githubId"
                         type="githubId"
                         id="githubId"
@@ -85,7 +82,6 @@ function Signup(props) {
                 <div className="flex-row space-between my-2">
                     <label htmlFor="pwd">Password:</label>
                     <input
-                        placeholder="******"
                         name="password"
                         type="password"
                         id="pwd"
