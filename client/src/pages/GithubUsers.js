@@ -62,7 +62,11 @@ const GitUsers = () => {
     }, []);
 
     //uncomment to check all properties of data/user on dev tools console
-    console.log(data[githubIndex])
+    // console.log(data[githubIndex])
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
 
     if (!searchInput) return <div>...loading</div>;
     else {
@@ -70,7 +74,7 @@ const GitUsers = () => {
             <OuterContainer className="GitUsers">
                 {/* <h1>List of {data.length || 0} users:</h1> */}
                 <h1>Explore github users:</h1>
-                <button>Refresh Results</button>
+                <button onClick={refreshPage}>Refresh Results</button>
 
                 <InnerContainer>
                     {data.map((user) => (
