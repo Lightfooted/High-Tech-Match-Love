@@ -409,3 +409,8 @@ label {
   background-color: var(--dark);
   color: var(--light);
 }
+
+.widget {
+justify-content: center;
+text-align: center;
+}
