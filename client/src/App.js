@@ -64,16 +64,16 @@ function App() {
               </Route>
             <Route path="/chatlogin">
             <ChatLogin />
-          </Route>
-          <LoggedChatRoute path="/roomlist">
-            <RoomList />
-          </LoggedChatRoute>
-          <LoggedChatRoute path="/createroom">
-            <CreateRoom />
-          </LoggedChatRoute>
-          <LoggedChatRoute path="/chatroom/:room">
-            <ChatRoom />
-          </LoggedChatRoute>
+            </Route>
+            <LoggedChatRoute path="/roomlist">
+              <RoomList />
+            </LoggedChatRoute>
+            <LoggedChatRoute path="/createroom">
+              <CreateRoom />
+            </LoggedChatRoute>
+            <LoggedChatRoute path="/chatroom/:room">
+              <ChatRoom />
+            </LoggedChatRoute>
             <Route component={NoMatch} />
           </Switch>
         </div>
@@ -86,7 +86,7 @@ function App() {
       <Route
         {...rest}
         render={({ location }) =>
-          localStorage.getItem('nickname') ? (
+          localStorage.getItem('moniker') ? (
             children
           ) : (
             <Redirect
