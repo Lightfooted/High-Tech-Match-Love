@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { randomNumber } from '../utils/random';
 import styled from 'styled-components'
 
@@ -70,11 +71,14 @@ const GitUsers = () => {
                 <InnerContainer>
                     {data.map((user) => (
                         <Individual key={user.id}>
-                            <p>Login ID: {user.login}, GitHub ID: {user.id} </p>
-                            <div>Github Link </div>
+                            {/* {console.log({user})} */}
                             <img alt='pic' src={user.avatar_url} />
+                            <p>Login ID: {user.login}, GitHub ID: {user.id} </p>
+                            {/* <Link to={user.url}>Github Link </Link> */}
+                            <Link to={{ pathname: user.url }} target="_blank"> Github Link </Link>
+                            
                         </Individual>
-                    ))}
+                    ))}]
                 </InnerContainer>
 
 
