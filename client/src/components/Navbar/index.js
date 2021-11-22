@@ -29,8 +29,8 @@ const Navbar = () => {
                     <Link className="my-1" to="/chat">
                         <MenuLink>Chat</MenuLink>
                     </Link>
-                    <Link to="/messages">
-                        Messages
+                    <Link className="my-1" to="/messages">
+                        <MenuLink>Messages</MenuLink>
                     </Link>
                     <Link className="my-1" to="/" onClick={() => Auth.logout()}>
                         <MenuLink>Logout</MenuLink>
@@ -131,7 +131,7 @@ const MenuLink = styled.div`
     transition: all 0.3s ease-in-out;
     font-size: 0.9rem;
     text-align: center;
-
+    font-weight: bold;
 
     &:hover{
         color: orange;
