@@ -391,7 +391,28 @@ label {
   color: var(--light);
 }
 
+<<<<<<< HEAD
+/* Signup Page */
+
+.login {
+  margin-left: 20px;
+}
+
+.signup-title {
+  text-align: center;
+  font-size: 50px;
+  color: var(--dark);
+}
+
+/* Login Page */
+
+.login-title {
+  text-align: center;
+  font-size: 50px;
+  color: var(--dark);
+=======
 .widget {
 justify-content: center;
 text-align: center;
+>>>>>>> b783dd6a79f1b30ad9151b4da4bce23d45d516ae
 }
