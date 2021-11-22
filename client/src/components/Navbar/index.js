@@ -29,6 +29,9 @@ const Navbar = () => {
                     <Link className="my-1" to="/chat">
                         <MenuLink>Chat</MenuLink>
                     </Link>
+                    <Link to="/messages">
+                        Messages
+                    </Link>
                     <Link className="my-1" to="/" onClick={() => Auth.logout()}>
                         <MenuLink>Logout</MenuLink>
                     </Link>
@@ -58,7 +61,7 @@ const Navbar = () => {
                     <img src={Logo} height="40" width="180" alt="text here" />
                 </span>
             </Link>
-            <Hamburger onClick={ ()=>setIsOpen(!isOpen) }>
+            <Hamburger onClick={() => setIsOpen(!isOpen)}>
                 <span />
                 <span />
                 <span />
@@ -134,6 +137,5 @@ const MenuLink = styled.div`
         color: orange;
     }
 `
-// const MenuLink = styled.div``;
 
 export default Navbar;

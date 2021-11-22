@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { randomNumber } from '../utils/random';
 import styled from 'styled-components'
+import githubCute from '../assets/github-cute.png'
 
 const GitUsers = () => {
     const [data, setData] = useState([]);
@@ -31,7 +32,7 @@ const GitUsers = () => {
         // const pageNum = randomNumber(1, 30000000);
         // return `https://api.github.com/search/users?q=type%3Ausa&per_page=100&page=${pageNum}`
     }
-    
+
     const [githubIndex, setGithubIndex] = useState(0);
 
     useEffect(() => {
@@ -39,7 +40,7 @@ const GitUsers = () => {
             try {
                 const response = await fetch(gitSearchString());
 
-     
+
                 // const response = await fetch('https://api.github.com/users');
 
                 // const response = await fetch(`https://api.github.com/search/users?q=type%3Ausa`);
@@ -70,16 +71,18 @@ const GitUsers = () => {
                 {/* <h1>List of {data.length || 0} users:</h1> */}
                 <h1>Explore github users:</h1>
                 <button>Refresh Results</button>
-                
+
                 <InnerContainer>
                     {data.map((user) => (
                         <Individual key={user.id}>
                             {/* {console.log({user})} */}
-                            <img alt='pic' src={user.avatar_url} />
+                            <Image alt='pic' src={user.avatar_url} />
 
-                            <p>{user.login}</p> 
-                            <Link to={{ pathname: user.html_url }} target="_blank"> Github Link </Link>
-                            
+                            <Username>{user.login}</Username>
+                            <Link to={{ pathname: user.html_url }} target="_blank">
+                                <img className="github-link" src={githubCute} />
+                            </Link>
+
                         </Individual>
                     ))}
                 </InnerContainer>
@@ -89,6 +92,9 @@ const GitUsers = () => {
         );
     }
 };
+const Image = styled.img`
+    border-radius: 30px 30px 0 0;
+`
 
 const OuterContainer = styled.div`
     display: flex;
@@ -105,16 +111,24 @@ const InnerContainer = styled.div`
 `
 const Individual = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    background-color: black;
+    background-color: rgba(255,255,255,.5);
     width: 150px;
     margin: 10px 10px;
     align-items: center;
+    justify-content: center;
+    border-radius: 30px 30px 0 0;
 
     @media (max-width:512px){
         width: 25%;
     }
 `
-
+const Username = styled.p`
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+    font-weight: bold;
+`
 export default GitUsers;
