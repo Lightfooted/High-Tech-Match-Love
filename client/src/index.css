@@ -17,9 +17,6 @@ html,
 body {
   min-height: 100%;
   background-color: var(--primary);
-}
-
-body {
   margin: 100px 0 0 0;
   padding: 0;
   font-family: 'HKGroteskRegular';
@@ -85,7 +82,7 @@ ul {
 a {
   color: var(--tertiary);
   text-decoration: none;
-  font-weight: bold;
+  text-align: center;
 }
 
 header {
@@ -306,6 +303,10 @@ text-align: center;
   height: 300px;
 }
 
+.github-link{
+  width: 75%;
+}
+
 /* Chat Page */
 .App {
   margin: 420px
@@ -408,12 +409,17 @@ label {
 .login-title {
   text-align: center;
   font-size: 50px;
+  color: var(--dark);
+}
+
+.widget {
+justify-content: center;
+text-align: center;
   color: var(--dark);}
 .widget {
 justify-content: center;
 text-align: center;
 }
-// Chat. Brooke do ya thaaaang.
   
 .chat-form {
   margin-left: 10px;
