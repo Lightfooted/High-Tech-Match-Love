@@ -65,13 +65,12 @@ function RoomList() {
 
     const logout = () => {
         localStorage.removeItem('moniker');
-        history.push('/login');
+        history.push('/chat'); // This was originally redirecting to the main sites login/signup page when the user removes themselves from roomlist. We didn't want that. It now redirects to chat login.
     }
 
     return (
         <div>
             <main>
-              {/* Need to fiddle with this. Logging out user from chat sends them back to signup/login page */}
                 <h3>{moniker} <button onClick={() => { logout() }}>Logout</button></h3>
                 <h2>Available Chat Rooms</h2>
                 <div>
