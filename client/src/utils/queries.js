@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 
 export const QUERY_USER = gql`
-  {
+  { 
     user {
       firstName
       lastName
@@ -12,8 +12,11 @@ export const QUERY_USER = gql`
       bio
       profilePicUrl
       age
-      rightSwipes
-      leftSwipes
+      rightSwipes{
+        avatar_url
+        html_url
+        login
+      }
     }
   }
 `;

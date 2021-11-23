@@ -42,7 +42,6 @@ export const UPDATE_USER = gql`
             bio
             age
             rightSwipes
-            leftSwipes
             profilePicUrl
             _id
         }

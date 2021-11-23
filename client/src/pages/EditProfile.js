@@ -81,7 +81,6 @@ const UserProfile = () => {
 
     return (
         <>
-            { console.log(user) }
             <div className="user-profile-container">
                 <img alt='profile-pic' width={'300px'} src={user.profilePicUrl ? user.profilePicUrl : defaultUserPic} />
             </div>
