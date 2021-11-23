@@ -45,14 +45,9 @@ const resolvers = {
         //     */
         // },
 
-        getRightSwipes: async (parent, { userId }) => {
-            const user = await User.findById({ _id: userId });
-            return user.rightSwipes;
-        },
-
-        getLeftSwipes: async (parent, { userId }) => {
-            const user = await User.findbyId({ _id: userId });
-            return user.leftSwipes;
+        getRightSwipes: async (parent, { toAdd }, context) => {
+            const user = await User.findOneAndUpdate({_id: context.user._id},{$push:{ rightSwipes: {  } }});
+            return user;
         },
 
         usersWithMessages: async (parent, { userId }) => {
@@ -129,15 +124,6 @@ const resolvers = {
 
             throw new AuthenticationError('Not logged in');
         },
-
-        addLeftSwipe: async (parent, { toAdd }, context) => {
-            if (context.user) {
-                return await User.findByIdAndUpdate(context.user._id, { $addToSet: { leftSwipes: toAdd } }, { new: true });
-            }
-
-            throw new AuthenticationError('Not logged in');
-        },
-
         addMessage: async (parent, { text, recipient}, context) => {
             if (context.user) {
                 let message = await Message.create({ text: text, recipient: recipient, author: context.user._id});

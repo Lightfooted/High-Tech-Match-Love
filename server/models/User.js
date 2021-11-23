@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const followingSchema = require('./following')
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
@@ -49,8 +50,7 @@ const userSchema = new Schema({
         required: false
     },
 
-    rightSwipes: [ String ],
-    leftSwipes: [ String ],
+    rightSwipes: [followingSchema],
 
     profilePicUrl: {
         type: String,
