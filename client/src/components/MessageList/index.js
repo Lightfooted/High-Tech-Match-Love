@@ -53,9 +53,11 @@ const MessageList = ({ selectedUserId }) => {
         return <div>Loading...</div>;
     }
 
-    if (!messages?.length) {
-        return <div>No Messages!</div>
-    }
+    // if (!messages?.length) {
+    //     return <div>No Messages!</div>
+    // }
+
+    
 
     return (
         <>
@@ -68,7 +70,7 @@ const MessageList = ({ selectedUserId }) => {
                             <span style={{ color: "orange" }}> at {message.createdAt}</span>
                         </p>
                     ))}
-                    <AlwaysScrollToBottom />
+                    {/* <AlwaysScrollToBottom /> */}
 
                 </ul>
                 <form onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
