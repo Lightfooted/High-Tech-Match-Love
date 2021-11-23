@@ -354,7 +354,7 @@ label {
     margin-bottom: 5px;
 }
 
-.profile-submit {
+.profile-submit, .message-submit {
     border-radius: 4px;
     background-color: var(--secondary);
     color: var(--light);
@@ -596,7 +596,16 @@ label {
 .message-messages-column {
     margin-top: 0;
     width: 100%;
-    /* text-align: center; */
+}
+
+.message-form {
+    margin: 15px 0 0 0;
+    padding: 0;
+}
+
+.message-text {
+    margin: 0;
+    padding: 0;
 }
 
 .message-text p {
@@ -605,10 +614,19 @@ label {
 
 .message-text li {
     margin-top: 15px;
+    margin-left: 0;
 }
 
 .message-text p {
-    /* border: 1px solid var(--dark); */
     padding: 0;
     margin: 0;
+}
+
+.message-author {
+    color: var(--dark);
+    font-weight: bold;
+}
+
+.message-created-at {
+    color: var(--secondary);
 }

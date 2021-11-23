@@ -44,6 +44,7 @@ const MessageList = ({ selectedUserId }) => {
             });
             let t = [...messages, mutationResponse.data.addMessage];
             setMessages(t);
+            setNewMessage('');
         } catch (e) {
             alert(`error while saving user: ${e}`);
         }
@@ -64,8 +65,8 @@ const MessageList = ({ selectedUserId }) => {
                     {messages && messages.map(message => (
                         <li>
                             <p>
-                                <span className="message-author" style={{ color: "blue" }}> from {message.author.firstName} {message.author.lastName}</span>
-                                <span className="message-created-at" style={{ color: "orange" }}> at {message.createdAt}</span>
+                                <span className="message-author">{message.author.firstName} {message.author.lastName}</span>
+                                <span className="message-created-at"> {message.createdAt}</span>
                             </p>
                             <p className key={message._id}>
                                 {message.text}
@@ -75,11 +76,11 @@ const MessageList = ({ selectedUserId }) => {
                     <AlwaysScrollToBottom />
 
                 </ul>
-                <form onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
+                <form className="message-form" onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
                     <label>
                         Send a new message: <input type="text" name="text" value={newMessage} style={{ width: 400 }} onChange={handleFormChange} />
                     </label>
-                    <input type="submit" value="Submit" />
+                    <input className="message-submit" type="submit" value="Submit" />
                 </form>
                 <ScrollButton />
             </div>
