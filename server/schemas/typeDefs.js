@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+  const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
@@ -8,13 +8,18 @@ const typeDefs = gql`
     email: String
     location: String
     bio: String
-    rightSwipes: [String]
+    rightSwipes: [Following]
     githubId: String
     profilePicUrl: String
     age: Int
   }
 
-  input Following {
+  type Following{
+    avatar_url: String
+    html_url: String
+    login: String
+  }
+  input inputFollowing {
     avatar_url: String
     html_url: String
     login: String
@@ -60,7 +65,7 @@ const typeDefs = gql`
             bio: String,
             age: Int,
             profilePicUrl: String): Auth
-    addRightSwipe(toAdd: Following!): User,
+    addRightSwipe(toAdd: inputFollowing!): User,
     updateUser( firstName: String, 
                 lastName: String,
                 location: String, 

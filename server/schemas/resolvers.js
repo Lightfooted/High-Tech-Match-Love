@@ -46,7 +46,7 @@ const resolvers = {
         // },
 
         getRightSwipes: async (parent, { toAdd }, context) => {
-            const user = await User.findOneAndUpdate({_id: context.user._id},{$push:{ rightSwipes: {  } }});
+            const user = await User.findOneAndUpdate({_id: context.user._id},{$push:{ rightSwipes: toAdd }});
             return user;
         },
 

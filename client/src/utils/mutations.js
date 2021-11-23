@@ -50,7 +50,7 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_RIGHT_SWIPE = gql`
-  mutation addRightSwipe($toAdd: String!){
+  mutation addRightSwipe($toAdd: inputFollowing!){
     addRightSwipe(toAdd: $toAdd){
       _id
       firstName

@@ -8,7 +8,7 @@ const SwipeProfile = () => {
     const [data, setData] = useState([]);
     const [searchInput, setsearchInput] = useState('');
 
-    const { addRightSwipe } = useMutation(ADD_RIGHT_SWIPE)
+    const [ addRightSwipe ] = useMutation(ADD_RIGHT_SWIPE)
 
     const gitSearchString = (numResults) => {
         const sinceId = randomNumber(1, 30000000);
@@ -37,9 +37,13 @@ const SwipeProfile = () => {
 
     const handleSwipe = async (action) => {
         if (action === 'save') {
-            // await addRightSwipe({ 
-            //     variables: 
-            // })
+            await addRightSwipe({ 
+                variables: { toAdd: {
+                    avatar_url: data[githubIndex].avatar_url,
+                    html_url: data[githubIndex].html_url,
+                    login: data[githubIndex].login
+                }}
+            })
             console.log(data[githubIndex])
         }
         else if (action === 'dismiss') {
