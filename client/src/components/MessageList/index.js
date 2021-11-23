@@ -60,22 +60,26 @@ const MessageList = ({ selectedUserId }) => {
     return (
         <>
             <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50 }}>
-                <ul>
+                <ul className="message-text">
                     {messages && messages.map(message => (
-                        <p key={message._id}>
-                            {message.text}
-                            <span style={{ color: "blue" }}> from {message.author.firstName} {message.author.lastName}</span>
-                            <span style={{ color: "orange" }}> at {message.createdAt}</span>
-                        </p>
+                        <li>
+                            <p>
+                                <span className="message-author" style={{ color: "blue" }}> from {message.author.firstName} {message.author.lastName}</span>
+                                <span className="message-created-at" style={{ color: "orange" }}> at {message.createdAt}</span>
+                            </p>
+                            <p className key={message._id}>
+                                {message.text}
+                            </p>
+                        </li>
                     ))}
-                    {/* <AlwaysScrollToBottom /> */}
+                    <AlwaysScrollToBottom />
 
                 </ul>
                 <form onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
                     <label>
                         Send a new message: <input type="text" name="text" value={newMessage} style={{ width: 400 }} onChange={handleFormChange} />
                     </label>
-                    <input type="submit" value="Submit" style={{ marginTop: 10 }} />
+                    <input type="submit" value="Submit" />
                 </form>
                 <ScrollButton />
             </div>
