@@ -1,5 +1,8 @@
 import React from 'react';
 import Logo from "../../assets/white-logo.png";
+
+
+
 import {
     FooterContainer,
     FooterLinksContainer,
@@ -47,11 +50,6 @@ function Footer () {
                  </FooterLinkItems>
                 </FooterLinksWrapper>
             </FooterLinksContainer>
-            <SocialLogo to='/'>
-            <span className="logo">
-        <img src={Logo} height="40" width="180" alt="text here" />
-    </span>
-          </SocialLogo>
           <WebsiteRights>High Tech Match Love © 2021</WebsiteRights>
         </FooterContainer>
     )

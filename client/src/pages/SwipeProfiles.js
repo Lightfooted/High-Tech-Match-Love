@@ -66,4 +66,5 @@ const SwipeProfile = () => {
         );
     }
 };
+
 export default SwipeProfile;

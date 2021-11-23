@@ -274,6 +274,7 @@ input:focus {
 
 .hero-container {
   text-align: center;
+  background-size: cover;
 }
 
 .hero-text {
