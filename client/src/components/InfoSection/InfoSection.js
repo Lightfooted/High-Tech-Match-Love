@@ -38,7 +38,7 @@ function InfoSection({
                 <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
-                <Link to='/sign-up'>
+                <Link to='/signup'>
                   <Button big fontBig primary={primary}>
                     {buttonLabel}
                   </Button>
@@ -56,5 +56,25 @@ function InfoSection({
     </>
   );
 }
+
+// const LoginButton = styled.button`
+//   border-radius: 4px;
+//   background: ${({ primary }) => (primary ? '#68B2A0' : '#E0ECDE')};
+//   white-space: nowrap;
+//   padding: ${({ big }) => (big ? '12px 64px' : '10px 20px')};
+//   color: #fff;
+//   font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
+//   outline: none;
+//   border: none;
+//   cursor: pointer;
+//   &:hover {
+//     transition: all 0.3s ease-out;
+//     background: #fff;
+//     background-color: ${({ primary }) => (primary ? '#2C6975' : '#E0ECDE')};
+//   }
+//   @media screen and (max-width: 960px) {
+//     width: 100%;
+//   }
+// `;
 
 export default InfoSection;

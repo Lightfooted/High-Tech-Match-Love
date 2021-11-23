@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { randomNumber } from '../utils/random';
 import styled from 'styled-components'
 import githubCute from '../assets/github-cute.png'
+import Jumbotron from "../components/Jumbotron";
 
 const GitUsers = () => {
     const [data, setData] = useState([]);
@@ -62,7 +63,7 @@ const GitUsers = () => {
     }, []);
 
     //uncomment to check all properties of data/user on dev tools console
-    // console.log(data[githubIndex])
+    console.log(data[githubIndex])
 
     function refreshPage() {
         window.location.reload(false);
@@ -73,23 +74,39 @@ const GitUsers = () => {
         return (
             <OuterContainer className="GitUsers">
                 {/* <h1>List of {data.length || 0} users:</h1> */}
-                <h1>Explore github users:</h1>
-                <button onClick={refreshPage}>Refresh Results</button>
+                {Array.isArray(data) ?
+                    <div>
+                        <h1>Explore github users:</h1>
+                        <button onClick={refreshPage}>Refresh Results</button>
 
-                <InnerContainer>
-                    {data.map((user) => (
-                        <Individual key={user.id}>
-                            {/* {console.log({user})} */}
-                            <Image alt='pic' src={user.avatar_url} />
+                        <InnerContainer>
+                            {data.map((user) => (
+                                <Individual key={user.id}>
+                                    {/* {console.log({user})} */}
+                                    <Image alt='pic' src={user.avatar_url} />
 
-                            <Username>{user.login}</Username>
-                            <Link to={{ pathname: user.html_url }} target="_blank">
-                                <img className="github-link" src={githubCute} />
-                            </Link>
+                                    <Username>{user.login}</Username>
+                                    <Link to={{ pathname: user.html_url }} target="_blank">
+                                        <img className="github-link" src={githubCute} />
+                                    </Link>
 
-                        </Individual>
-                    ))}
-                </InnerContainer>
+                                </Individual>
+                            ))}
+                        </InnerContainer>
+                    </div>
+                    :
+                    <div>
+                        <Jumbotron>
+                            <h1 className="no-match">Please give us some minutes while we look up more intersting developers for you</h1>
+                            <h1>
+                                <span role="img" aria-label="waiting clock">
+                                    🕰️
+                                </span>
+                            </h1>
+                        </Jumbotron>
+                    </div>
+                }
+
 
 
             </OuterContainer>
