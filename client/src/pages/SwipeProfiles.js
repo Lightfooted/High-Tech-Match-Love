@@ -35,7 +35,6 @@ const SwipeProfile = () => {
     }, []);
 
     const handleSwipe = async (action)=> {
-        console.log(action)
         if(action === 'save'){
             // await addRightSwipe({ 
             //     variables: 
