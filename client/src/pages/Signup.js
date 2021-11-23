@@ -43,7 +43,7 @@ function Signup(props) {
             <h2 className="signup-title">New here?</h2>
             <p style={{textAlign:'center'}}>Sign up and find your high tech love match!</p>
             <form onSubmit={handleFormSubmit}>
-                <div className="flex-row space-between my-2">
+                <div>
                     <label htmlFor="firstName">First Name:</label>
                     <input
                         name="firstName"
@@ -52,7 +52,7 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
+                <div>
                     <label htmlFor="lastName">Last Name:</label>
                     <input
                         name="lastName"
@@ -61,7 +61,7 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
+                <div>
                     <label htmlFor="email">Email:</label>
                     <input
                         name="email"
@@ -70,7 +70,7 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
+                <div>
                     <label htmlFor="githubId">GitHub ID:</label>
                     <input
                         name="githubId"
@@ -79,7 +79,7 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
+                <div>
                     <label htmlFor="pwd">Password:</label>
                     <input
                         name="password"
@@ -94,8 +94,8 @@ function Signup(props) {
                     </div>
                 ) : null}
 
-                <div className="flex-row flex-end">
-                    <button type="submit">Submit</button>
+                <div className="signup-btn" >
+                    <button  type="submit">Submit</button>
                 </div>
             </form>
         </div>

@@ -259,10 +259,6 @@ input:focus {
   }
 }
 
-/* NAVBAR STARTS */
-
-/* NAVBAR ENDS */
-
 /* Homepage */
 
 .no-match {
@@ -271,6 +267,7 @@ input:focus {
 
 .hero-container {
   text-align: center;
+  background-size: cover;
 }
 
 .hero-text {
@@ -303,6 +300,10 @@ text-align: center;
   height: 300px;
 }
 
+.widget {
+  justify-content: center;
+  text-align: center;
+  }
 .github-link{
   width: 75%;
 }
@@ -318,15 +319,13 @@ text-align: center;
   text-align: center;
 }
 
-
 form{
   background: var(--primary);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   margin: 0 auto;
-  max-width: 500px;
-  padding: 30px 50px;
+  max-width: 400px;
 }
 
 input {
@@ -404,6 +403,12 @@ label {
   color: var(--dark);
 }
 
+.signup-btn {
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
 /* Login Page */
 
 .login-title {
@@ -412,13 +417,10 @@ label {
   color: var(--dark);
 }
 
-.widget {
-justify-content: center;
-text-align: center;
-  color: var(--dark);}
-.widget {
-justify-content: center;
-text-align: center;
+.login-btn {
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 90px;
 }
   
 .chat-form {
@@ -525,3 +527,13 @@ text-align: center;
   left: 10%;
   right:10%;
 }
+
+/* Footer */
+
+.grow { 
+  transition: all .2s ease-in-out; 
+  }  
+
+.grow:hover { 
+  transform: scale(1.1); 
+  }

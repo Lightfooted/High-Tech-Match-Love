@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '../globalStyles';
 import StarLogo from "../assets/star.png";
 import HeroImage from "../assets/homepage-img.png";
 import { Link } from "react-router-dom";
+
 
 function HeroSection() {
   return (
