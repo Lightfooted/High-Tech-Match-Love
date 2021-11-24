@@ -1,11 +1,66 @@
-# High-Tech-Match-Love
+![high-tech-match-love-logo](https://user-images.githubusercontent.com/83384131/143276104-30071a50-850b-4495-81b8-119d58df216c.png)
+  
 
-11/12/2021 - Brenda
+# Table of Contents
+* [Screenshots](#screenshots)
+* [Description](#description)
+* [Teachnologies Used](#technologies-used)
+* [Future Updates and Features](#future-updates-and-features)
+* [License](#license)
+* [Contributors](#contributors)
 
-Initial code created with the Module 22 starter code.
+## Description:
+High Tech Love Match is a dating app specifically created with the software engineer in mind. It is built to match like-minded people who are seeking a relationship. 
 
-After installing the starter code, I ran npm install in the root directory. I did not run the seed command since that would install the Mod22 stuf (shop-shop app). I then ran npm run develop from the root directory, and it works, althouhg, of course, the shop is empty since I didn't run the seed.
+## Link to Deployed Application 
 
-From 22.1.3: Note that the starter code includes a service worker. The service worker inclusion is no longer the default behavior for the most recent version of the create-react-app utility. When using this utility in the future to make an app from scratch, remember that some additional arguments are required to add a service worker to your app. For more information, refer to the Create React App documentation on creating a PWA (Links to an external site.).
 
-22.4.4 and 22.4.5 install Stripe (a payment package). I'm not installing that yet since we don't know yet if we'll need that.
+## Screenshots
+
+## Homepage
+<img width="1440" alt="Screen Shot 2021-11-24 at 10 57 07 AM" src="https://user-images.githubusercontent.com/83384131/143272440-66a4e106-46de-4e86-bec3-f3bf11c30a79.png">
+
+<img width="1440" alt="Screen Shot 2021-11-24 at 10 54 52 AM" src="https://user-images.githubusercontent.com/83384131/143272532-2668d91a-bc41-4d36-8486-7eb6a3c17e4f.png">
+
+## Find Match
+<img width="1440" alt="Screen Shot 2021-11-24 at 10 56 07 AM" src="https://user-images.githubusercontent.com/83384131/143272695-ae098c6a-199a-4a30-b076-72fddb425b54.png">
+
+## Explore
+<img width="1436" alt="Screen Shot 2021-11-24 at 10 55 10 AM" src="https://user-images.githubusercontent.com/83384131/143272782-7bb3c30b-628f-4d81-a886-3c2759d907a7.png">
+
+## Chat
+<img width="1440" alt="Screen Shot 2021-11-24 at 10 56 48 AM" src="https://user-images.githubusercontent.com/83384131/143273186-7aa0c6c2-881e-4805-b7f7-d43cf070d89b.png">
+
+## Login
+<img width="1438" alt="Screen Shot 2021-11-24 at 11 02 56 AM" src="https://user-images.githubusercontent.com/83384131/143273109-0b85f11e-2832-4699-8cbc-d081b352adff.png">
+
+## Signup
+<img width="1437" alt="Screen Shot 2021-11-24 at 11 03 14 AM" src="https://user-images.githubusercontent.com/83384131/143273147-a739c0c1-2203-4d51-b6e3-04015931788a.png">
+
+
+## Technologies Used
+
+* React
+* JavaScript
+* GraphQL
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose ODM
+* JWT
+* Heroku
+* Firebase (for the chat)
+* Cloudinary (for profile pic upload)
+* dayjs
+
+## Future Updates and Features
+*
+
+## License
+![badge](https://img.shields.io/badge/License-MIT-%2368B2A0)  This project uses the MIT license.
+  
+## Contributors
+* [Kimberly Collazo](http://github.com/Lightfooted) 
+* [Brooke Madison](https://github.com/brookemadison)
+* [Brenda Jackels](https://github.com/bjackels5)
+* [Luiz Padredi](https://github.com/Padredilg)
