@@ -31,49 +31,29 @@ const UserProfile = () => {
         <>
             <div>
                 <Link to="/editprofile">
-                    Edit Profile
+                    <button>Edit Profile</button>
                 </Link>
             </div>
-            {console.log(user)}
+
             <div className="user-profile-container">
                 <img alt='profile-pic' width={'300px'} src={user.profilePicUrl ? user.profilePicUrl : defaultUserPic} />
             </div>
+
             <div>
                 <div>
-
-                    First Name:
-                    <div type="text" name="firstName" value={user.firstName || ''} />
-
+                    <div>Name: {user.firstName} {user.lastName}</div>
                 </div>
                 <div>
-
-                    Last Name:
-                    <div type="text" name="lastName" value={user.lastName || ''} />
-
+                    <div>Age: {user.age}</div>
                 </div>
                 <div>
-
-                    Age:
-                    <div type="text" name="age" value={user.age || ''} />
-
+                    <div>Location: {user.location}</div>
                 </div>
                 <div>
-
-                    Location:
-                    <div type="text" name="location" value={user.location || ''} />
-
-                </div>
-                <div>
-
-                    GitHub ID:
-                    <div type="text" name="githubId" value={user.githubId || ''} />
-
+                    <div>GitHub ID: {user.githubId}</div>
                 </div>
                 <div >
-
-                    Bio:
-                    <textarea name="bio" rows="5" value={user.bio || ''} />
-
+                    <div>Bio: {user.bio}</div>
                 </div>
             </div>
 

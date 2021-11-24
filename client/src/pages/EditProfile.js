@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 // We will import Apollo Client and utila/queries to grab data for the current logged in user.
 import { QUERY_USER } from '../utils/queries';
 import { useQuery } from '@apollo/client';
@@ -61,9 +61,13 @@ const EditProfile = () => {
             });
 
             setUser(mutationResponse.data.updateUser);
+
+
         } catch (e) {
             alert(`error while saving user: ${e}`);
         }
+
+            
     }
 
     async function handleFormChange(e) {
