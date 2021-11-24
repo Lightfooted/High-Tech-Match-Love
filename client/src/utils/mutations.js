@@ -32,7 +32,7 @@ mutation addUser(
 `;
 
 export const UPDATE_USER = gql`
-    mutation updateUser($firstName: String!, $lastName: String!, $githubId: String!, $location: String, $age: Int!, $bio: String, $profilePicUrl: String){
+    mutation updateUser($firstName: String, $lastName: String, $githubId: String, $location: String, $age: Int, $bio: String, $profilePicUrl: String){
       updateUser(firstName: $firstName, lastName: $lastName, githubId: $githubId, location: $location, age: $age, bio: $bio, profilePicUrl: $profilePicUrl){
         firstName
         lastName
