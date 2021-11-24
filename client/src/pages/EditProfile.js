@@ -32,11 +32,9 @@ const UserProfile = () => {
 
     async function handleProfilePicUpdate(e) {
         const url = e.info.url;
-        console.log(url)
         const mutationResponse = await updateUser({
             variables: { profilePicUrl: url },
         });
-        
 
         setUser(mutationResponse.data.updateUser);
     }
@@ -47,7 +45,6 @@ const UserProfile = () => {
 
     async function handleFormSubmit(e) {
         /* gather up the data and update the user */
-        console.log(user.profilePicUrl)
         const info = {
             lastName: e.target.lastName.value,
             firstName: e.target.firstName.value,
@@ -57,12 +54,12 @@ const UserProfile = () => {
             githubId: e.target.githubId.value,
             profilePicUrl: user.profilePicUrl // see comments in handleFormChange
         };
-        console.log(info)
+
         try {
             const mutationResponse = await updateUser({
                 variables: info,
             });
-            console.log(mutationResponse)
+
             setUser(mutationResponse.data.updateUser);
         } catch (e) {
             alert(`error while saving user: ${e}`);
@@ -70,7 +67,11 @@ const UserProfile = () => {
     }
 
     async function handleFormChange(e) {
-        setUser({...user,[e.target.name]:e.target.value})
+        // why is the elements getting overwritten on each change in the other form elements?
+        // for now, re-set the info to the same thing to work around the issue
+        const saveUrl = user.profilePicUrl;
+        // save the state
+        setUser({ [e.target.name]: e.target.value, profilePicUrl: saveUrl });
     }
 
 
@@ -80,7 +81,6 @@ const UserProfile = () => {
 
     return (
         <>
-            { console.log(user) }
             <div className="user-profile-container">
                 <img alt='profile-pic' width={'300px'} src={user.profilePicUrl ? user.profilePicUrl : defaultUserPic} />
             </div>
@@ -112,37 +112,37 @@ const UserProfile = () => {
                 <div>
                     <label>
                         First Name:
-                        <input type="text" name="firstName" value={user.firstName || ''} onChange={handleFormChange} />
+                        <input type="text" name="firstName" value={user.firstName} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div>
                     <label>
                         Last Name:
-                        <input type="text" name="lastName" value={user.lastName || ''} onChange={handleFormChange} />
+                        <input type="text" name="lastName" value={user.lastName} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div>
                     <label>
                         Age:
-                        <input type="text" name="age" value={user.age || ''} onChange={handleFormChange} />
+                        <input type="text" name="age" value={user.age} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div>
                     <label>
                         Location:
-                        <input type="text" name="location" value={user.location || ''} onChange={handleFormChange} />
+                        <input type="text" name="location" value={user.location} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div>
                     <label>
                         GitHub ID:
-                        <input type="text" name="githubId" value={user.githubId || ''} onChange={handleFormChange} />
+                        <input type="text" name="githubId" value={user.githubId} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div >
                     <label>
                         Bio:
-                        <textarea name="bio" rows="5" value={user.bio || ''} onChange={handleFormChange} />
+                        <textarea name="bio" rows="5" value={user.bio} onChange={handleFormChange} />
                     </label>
                 </div>
                 <input className="profile-submit" type="submit" value="Submit"/>

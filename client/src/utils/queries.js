@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 
 export const QUERY_USER = gql`
-  {
+  { 
     user {
       firstName
       lastName
@@ -12,8 +12,11 @@ export const QUERY_USER = gql`
       bio
       profilePicUrl
       age
-      rightSwipes
-      leftSwipes
+      rightSwipes{
+        avatar_url
+        html_url
+        login
+      }
     }
   }
 `;
@@ -31,7 +34,7 @@ export const QUERY_ALL_USERS = gql`
       profilePicUrl
       age
       rightSwipes
-      leftSwipes
+      
     }
   }
 `;
@@ -49,7 +52,7 @@ export const QUERY_ALL_OTHER_USERS = gql`
       profilePicUrl
       age
       rightSwipes
-      leftSwipes
+      
     }
   }
 `;
@@ -65,7 +68,7 @@ export const QUERY_GITHUB_USER = gql`
         bio
         profilePicUrl
         rightSwipes
-        leftSwipes
+        
       }
   }
 `;
