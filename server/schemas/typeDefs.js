@@ -65,7 +65,7 @@ const typeDefs = gql`
             bio: String,
             age: Int,
             profilePicUrl: String): Auth
-    addRightSwipe(toAdd: inputFollowing!): User,
+    addRightSwipe(toAdd: inputFollowing!): User
     updateUser( firstName: String, 
                 lastName: String,
                 location: String, 

@@ -32,9 +32,11 @@ const UserProfile = () => {
 
     async function handleProfilePicUpdate(e) {
         const url = e.info.url;
+        console.log(url)
         const mutationResponse = await updateUser({
             variables: { profilePicUrl: url },
         });
+        
 
         setUser(mutationResponse.data.updateUser);
     }
@@ -45,6 +47,7 @@ const UserProfile = () => {
 
     async function handleFormSubmit(e) {
         /* gather up the data and update the user */
+        console.log(user.profilePicUrl)
         const info = {
             lastName: e.target.lastName.value,
             firstName: e.target.firstName.value,
@@ -54,12 +57,12 @@ const UserProfile = () => {
             githubId: e.target.githubId.value,
             profilePicUrl: user.profilePicUrl // see comments in handleFormChange
         };
-
+        console.log(info)
         try {
             const mutationResponse = await updateUser({
                 variables: info,
             });
-
+            console.log(mutationResponse)
             setUser(mutationResponse.data.updateUser);
         } catch (e) {
             alert(`error while saving user: ${e}`);
