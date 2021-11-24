@@ -55,15 +55,15 @@ const MessageList = ({ selectedUserId }) => {
     return (
         <>
             {/* <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50 }}> */}
-            <div>
-                <ul className="message-text">
+            <div className="message-wrapper">
+                <ul>
                     {messages && messages.map(message => (
                         <li>
                             <p>
                                 <span className="message-author">{message.author.firstName} {message.author.lastName}</span>
                                 <span className="message-created-at"> {message.createdAt}</span>
                             </p>
-                            <p className key={message._id}>
+                            <p className="message-text" key={message._id}>
                                 {message.text}
                             </p>
                         </li>

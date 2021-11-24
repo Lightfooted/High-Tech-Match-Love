@@ -45,14 +45,6 @@ export const QUERY_ALL_OTHER_USERS = gql`
       _id
       firstName
       lastName
-      email
-      githubId
-      location
-      bio
-      profilePicUrl
-      age
-      rightSwipes
-      
     }
   }
 `;
