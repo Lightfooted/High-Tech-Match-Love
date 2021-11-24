@@ -67,11 +67,7 @@ const UserProfile = () => {
     }
 
     async function handleFormChange(e) {
-        // why is the elements getting overwritten on each change in the other form elements?
-        // for now, re-set the info to the same thing to work around the issue
-        const saveUrl = user.profilePicUrl;
-        // save the state
-        setUser({ [e.target.name]: e.target.value, profilePicUrl: saveUrl });
+        setUser({...user,[e.target.name]:e.target.value})
     }
 
 
