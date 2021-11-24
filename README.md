@@ -13,7 +13,7 @@
 High Tech Love Match is a dating app specifically created with the software engineer in mind. It is built to match like-minded people who are seeking a relationship. 
 
 ## Link to Deployed Application 
-
+Deployed: https://high-tech-match-love.herokuapp.com/
 
 ## Screenshots
 
@@ -42,22 +42,31 @@ High Tech Love Match is a dating app specifically created with the software engi
 
 * React
 * JavaScript
+* HTML
+* CSS
 * Axios
 * Apollo
 * GraphQL
 * Node.js
 * Express.js
+* express session
 * MongoDB
 * Mongoose ODM
 * React Router DOM
+* Bcrypt
+* Dotenv
 * JWT
 * Heroku
 * Firebase (for the chat)
 * Cloudinary (for profile pic upload)
+* Github API
 * dayjs
 
 ## Future Updates and Features
-*
+* Messages: real-time update using Apollo Subscribe, filter by friends/follows.
+* Private Chat Rooms
+* Allow Following
+* Links to profile include the pic
 
 ## License
 ![badge](https://img.shields.io/badge/License-MIT-%2368B2A0)  This project uses the MIT license.
