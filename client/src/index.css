@@ -547,7 +547,7 @@ label {
 
 /* Messages page */
 .message-page-wrapper {
-    margin-top: 0;
+    /* margin-top: 0; */
     margin-left: 15px;
 }
 
@@ -583,7 +583,8 @@ label {
     align-items: center;
     justify-content: center;
     /* background-color: var(--dark); */
-    text-align: center; /* keeps the buttons centered */
+    text-align: center;
+    /* keeps the buttons centered */
 }
 
 .message-page-user-button {
@@ -629,4 +630,9 @@ label {
 
 .message-created-at {
     color: var(--secondary);
+}
+
+/* add a border around the cards on  */
+.iEMLsd {
+    border: 1px solid var(--dark);
 }

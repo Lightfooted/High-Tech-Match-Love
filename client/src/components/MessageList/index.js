@@ -9,11 +9,9 @@ import ScrollButton from '../ScrollToTop'
 
 const AlwaysScrollToBottom = () => {
     const elementRef = useRef();
-    useEffect(() => elementRef.current.scrollIntoView());
+    useEffect(() => elementRef.current.scrollIntoView(false));
     return <div ref={elementRef} />;
 };
-
-
 
 const MessageList = ({ selectedUserId }) => {
 
@@ -54,13 +52,10 @@ const MessageList = ({ selectedUserId }) => {
         return <div>Loading...</div>;
     }
 
-    // if (!messages?.length) {
-    //     return <div>No Messages!</div>
-    // }
-
     return (
         <>
-            <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50 }}>
+            {/* <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50 }}> */}
+            <div>
                 <ul className="message-text">
                     {messages && messages.map(message => (
                         <li>
@@ -73,7 +68,6 @@ const MessageList = ({ selectedUserId }) => {
                             </p>
                         </li>
                     ))}
-                    <AlwaysScrollToBottom />
 
                 </ul>
                 <form className="message-form" onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
@@ -82,6 +76,7 @@ const MessageList = ({ selectedUserId }) => {
                     </label>
                     <input className="message-submit" type="submit" value="Submit" />
                 </form>
+                <AlwaysScrollToBottom />
                 <ScrollButton />
             </div>
         </>
