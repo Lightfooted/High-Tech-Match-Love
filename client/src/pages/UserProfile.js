@@ -65,7 +65,7 @@ const UserProfile = () => {
             console.log(mutationResponse)
             setUser(mutationResponse.data.updateUser);
         } catch (e) {
-            alert(`error while saving user: ${e}`);
+            console.log(`error while saving user: ${e}`);
         }
     }
 
