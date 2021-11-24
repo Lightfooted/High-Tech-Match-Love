@@ -43,26 +43,32 @@ h6 {
 
 h1 {
   font-size: 2.25rem;
+  color: var(--dark);
 }
 
 h2 {
   font-size: 2rem;
+  color: var(--dark);
 }
 
 h3 {
   font-size: 1.75rem;
+  color: var(--dark);
 }
 
 h4 {
   font-size: 1.5rem;
+  color: var(--dark);
 }
 
 h5 {
   font-size: 1.25rem;
+  color: var(--dark);
 }
 
 h6 {
   font-size: 1rem;
+  color: var(--dark)
 }
 
 p {
@@ -303,7 +309,8 @@ text-align: center;
 .widget {
   justify-content: center;
   text-align: center;
-  }
+}
+
 .github-link{
   width: 75%;
 }
@@ -423,6 +430,8 @@ label {
   margin-bottom: 90px;
 }
   
+/* Chat */
+
 .chat-form {
   margin-left: 10px;
 }
@@ -446,6 +455,7 @@ label {
   border-bottom-right-radius: .4em;
   padding: 5px 10px 10px;
   left: 15%;
+  margin-bottom: 8px;
 }
   
 .sent-chat-message .right-chat-box span.focused-user-name {
@@ -471,6 +481,7 @@ label {
   margin-top: -13.5px;
   margin-right: -27px;
 }
+
 .join-status {
   position: relative;
   background: lightblue;
@@ -528,12 +539,40 @@ label {
   right:10%;
 }
 
+.chat-login {
+  margin-bottom: 145px;
+}
+
+.create-chat-room {
+  margin-bottom: 110px;
+}
+
+.create-chat-room-title{
+  text-align: center;
+}
+
+.available-chat-rooms{
+  margin-bottom: 110px;
+  text-align: center;
+}
+
+.chatroom {
+  margin-left: 30px;
+  margin-bottom: 50px;
+}
+
+.create-chat-room {
+  margin-bottom: 8px;
+  font-family: 'Spectral', serif; 
+  font-size: 20px; 
+}
+
 /* Footer */
 
 .grow { 
   transition: all .2s ease-in-out; 
-  }  
+}  
 
 .grow:hover { 
-  transform: scale(1.1); 
-  }
+  transform: scale(1.1);
+}

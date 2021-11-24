@@ -31,7 +31,7 @@ function ChatLogin() {
     return (
 			<div>
 					<main>
-							<form onSubmit={userLogin}>
+							<form className='chat-login' onSubmit={userLogin}>
 									<div>
 													<label>Chat Username:</label>
 													<input type='text' name='moniker' id='moniker' placeholder='username' value={creds.moniker} onChange={onChange} />

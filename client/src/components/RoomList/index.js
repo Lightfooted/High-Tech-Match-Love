@@ -70,10 +70,10 @@ function RoomList() {
 
     return (
         <div>
-            <main>
-                <h3>{moniker} <button onClick={() => { logout() }}>Logout</button></h3>
+            <main className="available-chat-rooms">
+                <h3>{moniker}</h3>
                 <h2>Available Chat Rooms</h2>
-                <div>
+                <div className="create-chat-room">
                     <Link to='/createroom'>Create Chat Room</Link>
                 </div>
                 <div>
@@ -81,6 +81,7 @@ function RoomList() {
                         <div key={idx} action onClick={() => { enterChatRoom(item.chatname) }}>{item.chatname}</div>
                     ))}
                 </div>
+                <button onClick={() => { logout() }}>Logout</button>
             </main>
         </div>
     );
