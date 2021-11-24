@@ -34,7 +34,7 @@ export const QUERY_ALL_USERS = gql`
       profilePicUrl
       age
       rightSwipes
-      leftSwipes
+      
     }
   }
 `;
@@ -52,7 +52,7 @@ export const QUERY_ALL_OTHER_USERS = gql`
       profilePicUrl
       age
       rightSwipes
-      leftSwipes
+      
     }
   }
 `;
@@ -68,7 +68,7 @@ export const QUERY_GITHUB_USER = gql`
         bio
         profilePicUrl
         rightSwipes
-        leftSwipes
+        
       }
   }
 `;
