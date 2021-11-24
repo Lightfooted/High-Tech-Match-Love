@@ -42,11 +42,14 @@ High Tech Love Match is a dating app specifically created with the software engi
 
 * React
 * JavaScript
+* Axios
+* Apollo
 * GraphQL
 * Node.js
 * Express.js
 * MongoDB
 * Mongoose ODM
+* React Router DOM
 * JWT
 * Heroku
 * Firebase (for the chat)
