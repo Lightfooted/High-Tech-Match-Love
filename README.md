@@ -13,7 +13,7 @@
 High Tech Love Match is a dating app specifically created with the software engineer in mind. It is built to match like-minded people who are seeking a relationship. 
 
 ## Link to Deployed Application 
-Deployed: https://high-tech-match-love.herokuapp.com/
+Deployed: https://high-tech-match.herokuapp.com/
 
 ## Screenshots
 
