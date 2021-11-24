@@ -25,6 +25,7 @@ import ChatLogin from './components/ChatLogin';
 import RoomList from './components/RoomList';
 import CreateRoom from './components/CreateRoom';
 import ChatRoom from './components/ChatRoom';
+import EditProfile from './pages/EditProfile';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -58,6 +59,7 @@ function App() {
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/gitusers" component={GithubUsers} />
             <Route exact path="/findmatch" component={SwipeProfile} />
+            <Route exact path="/editprofile" component={EditProfile} />
             {/* <Route exact path ="/chat" component={Chat} /> */}
             <Route exact path ="/messages" component={Messages} />
             <Route path='/chat'>

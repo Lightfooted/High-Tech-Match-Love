@@ -7,7 +7,7 @@ import { UPDATE_USER } from '../utils/mutations';
 import { WidgetLoader, Widget } from 'react-cloudinary-upload-widget';
 import defaultUserPic from "../assets/genericuser.png";
 
-const UserProfile = () => {
+const EditProfile = () => {
 
     const [user, setUser] = useState({
         lastName: '',
@@ -153,4 +153,4 @@ const UserProfile = () => {
     );
 };
 
-export default UserProfile;
+export default EditProfile;
