@@ -46,12 +46,12 @@ const UserProfile = () => {
     async function handleFormSubmit(e) {
         /* gather up the data and update the user */
         const info = {
-            lastName: e.target.lastName.defaultValue,
-            firstName: e.target.firstName.defaultValue,
-            bio: e.target.bio.defaultValue,
-            location: e.target.location.defaultValue,
-            age: parseInt(e.target.age.defaultValue),
-            githubId: e.target.githubId.defaultValue,
+            lastName: e.target.lastName.value,
+            firstName: e.target.firstName.value,
+            bio: e.target.bio.value,
+            location: e.target.location.value,
+            age: parseInt(e.target.age.value),
+            githubId: e.target.githubId.value,
             profilePicUrl: user.profilePicUrl // see comments in handleFormChange
         };
 
@@ -67,11 +67,7 @@ const UserProfile = () => {
     }
 
     async function handleFormChange(e) {
-        // why is the elements getting overwritten on each change in the other form elements?
-        // for now, re-set the info to the same thing to work around the issue
-        const saveUrl = user.profilePicUrl;
-        // save the state
-        setUser({ [e.target.name]: e.target.defaultValue, profilePicUrl: saveUrl });
+        setUser({...user,[e.target.name]:e.target.value})
     }
 
 
@@ -113,40 +109,40 @@ const UserProfile = () => {
                 <div>
                     <label>
                         First Name:
-                        <input type="text" name="firstName" defaultValue={user.firstName} onChange={handleFormChange} />
+                        <input type="text" name="firstName" value={user.firstName} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div>
                     <label>
                         Last Name:
-                        <input type="text" name="lastName" defaultValue={user.lastName} onChange={handleFormChange} />
+                        <input type="text" name="lastName" value={user.lastName} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div>
                     <label>
                         Age:
-                        <input type="text" name="age" defaultValue={user.age} onChange={handleFormChange} />
+                        <input type="text" name="age" value={user.age} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div>
                     <label>
                         Location:
-                        <input type="text" name="location" defaultValue={user.location} onChange={handleFormChange} />
+                        <input type="text" name="location" value={user.location} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div>
                     <label>
                         GitHub ID:
-                        <input type="text" name="githubId" defaultValue={user.githubId} onChange={handleFormChange} />
+                        <input type="text" name="githubId" value={user.githubId} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div >
                     <label>
                         Bio:
-                        <textarea name="bio" rows="5" defaultValue={user.bio} onChange={handleFormChange} />
+                        <textarea name="bio" rows="5" value={user.bio} onChange={handleFormChange} />
                     </label>
                 </div>
-                <input className="profile-submit" type="submit" defaultValue="Submit"/>
+                <input className="profile-submit" type="submit" value="Submit"/>
             </form>
 
         
