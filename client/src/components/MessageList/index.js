@@ -9,11 +9,9 @@ import ScrollButton from '../ScrollToTop'
 
 const AlwaysScrollToBottom = () => {
     const elementRef = useRef();
-    useEffect(() => elementRef.current.scrollIntoView());
+    useEffect(() => elementRef.current.scrollIntoView(false));
     return <div ref={elementRef} />;
 };
-
-
 
 const MessageList = ({ selectedUserId }) => {
 
@@ -44,6 +42,7 @@ const MessageList = ({ selectedUserId }) => {
             });
             let t = [...messages, mutationResponse.data.addMessage];
             setMessages(t);
+            setNewMessage('');
         } catch (e) {
             alert(`error while saving user: ${e}`);
         }
@@ -53,30 +52,31 @@ const MessageList = ({ selectedUserId }) => {
         return <div>Loading...</div>;
     }
 
-    if (!messages?.length) {
-        return <div>No Messages!</div>
-    }
-
     return (
         <>
-            <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50 }}>
-                <ul>
+            {/* <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50 }}> */}
+            <div>
+                <ul className="message-text">
                     {messages && messages.map(message => (
-                        <p key={message._id}>
-                            {message.text}
-                            <span style={{ color: "blue" }}> from {message.author.firstName} {message.author.lastName}</span>
-                            <span style={{ color: "orange" }}> at {message.createdAt}</span>
-                        </p>
+                        <li>
+                            <p>
+                                <span className="message-author">{message.author.firstName} {message.author.lastName}</span>
+                                <span className="message-created-at"> {message.createdAt}</span>
+                            </p>
+                            <p className key={message._id}>
+                                {message.text}
+                            </p>
+                        </li>
                     ))}
-                    <AlwaysScrollToBottom />
 
                 </ul>
-                <form onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
+                <form className="message-form" onSubmit={handleFormSubmit} style={{ marginBottom: 40 }}>
                     <label>
                         Send a new message: <input type="text" name="text" value={newMessage} style={{ width: 400 }} onChange={handleFormChange} />
                     </label>
-                    <input type="submit" value="Submit" style={{ marginTop: 10 }} />
+                    <input className="message-submit" type="submit" value="Submit" />
                 </form>
+                <AlwaysScrollToBottom />
                 <ScrollButton />
             </div>
         </>

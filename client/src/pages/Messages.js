@@ -20,7 +20,7 @@ const Messages = () => {
 
     return (
         <>
-            <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50, marginBottom: 140, textAlign: 'center' }}>
+            <div style={{ marginTop: 50, marginRight: 50, marginLeft: 50, marginBottom: 140, textAlign: 'center'}}>
                 <h3>Users:</h3>
 
                 <button key={'noone'} onClick={() => setSelectedUser(null)}>Clear User Selection</button>
