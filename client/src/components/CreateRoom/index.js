@@ -29,8 +29,8 @@ function CreateRoom() {
 	}
 
 	return (
-			<main>
-					<h2>Create a new name for your chat room</h2>
+			<main className="create-chat-room">
+					<h2 className="create-chat-room-title">Create a new name for your chat room</h2>
 					<form onSubmit={save}>
 							<section>
 									<label>Chat room name:</label>

@@ -94,15 +94,17 @@ function ChatRoom() {
 
 	return (
 			<div>
-				<div>
-						<div>
-							<button type='button' onClick={() => { exitChat() }}>
-											Leave Chat
+				<div className='chatroom'>
+				<button
+										type='button' onClick={() => { exitChat() }}>
+										Leave Chat
 										</button>
+						<div>
 							{users.map((item, idx) => (
 								<div key={idx}>
 									<div>
-										<div>{item.moniker}</div>
+										<div>{item.moniker}
+										</div>
 									</div>
 							 </div>
 							))}
@@ -132,7 +134,7 @@ function ChatRoom() {
 							<form className='chat-form' onSubmit={submitMessage}>
 								<div>
 								<input type='text' name='message' id='message' placeholder='Enter chat text' value={newchat.message} onChange={onChange} />
-										<button type='submit'>Send</button>
+										<button className='send-chat-btn' type='submit'>Send</button>
 								</div>
 							</form>
 						</footer>
