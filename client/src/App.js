@@ -12,9 +12,7 @@ import Home from './pages/Home/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import SelectedUserImage from './components/SelectUserImage';
 import UserProfile from './pages/UserProfile'
-// import Nav from './components/Nav';
 import GithubUsers from './pages/GithubUsers';
 import SwipeProfile from './pages/SwipeProfiles';
 import Chat from './pages/Chat';
@@ -58,7 +56,6 @@ function App() {
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/gitusers" component={GithubUsers} />
             <Route exact path="/findmatch" component={SwipeProfile} />
-            {/* <Route exact path ="/chat" component={Chat} /> */}
             <Route exact path ="/messages" component={Messages} />
             <Route path='/chat'>
               <Chat/>
