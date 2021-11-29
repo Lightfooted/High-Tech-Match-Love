@@ -34,7 +34,7 @@ const GitUsers = () => {
         // return `https://api.github.com/search/users?q=type%3Ausa&per_page=100&page=${pageNum}`
     }
 
-    const [githubIndex, setGithubIndex] = useState(0);
+    const [githubIndex] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -87,7 +87,7 @@ const GitUsers = () => {
 
                                     <Username>{user.login}</Username>
                                     <Link to={{ pathname: user.html_url }} target="_blank">
-                                        <img className="github-link" src={githubCute} />
+                                        <img className="github-link" alt="link" src={githubCute} />
                                     </Link>
 
                                 </Individual>

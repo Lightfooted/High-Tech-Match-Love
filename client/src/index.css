@@ -630,3 +630,22 @@ label {
 .message-page-selected-user {
     font-weight: bold;
 }
+
+img.sc-kDTinF.jecZhJ {
+  border-bottom: 1px solid;
+  color: var(--dark);
+}
+
+div.sc-egiyK.iEMLsd {
+  border: 2px solid;
+  color: var(--dark);
+}
+
+p.UvFAV {
+  border-bottom: 1px solid;
+  width: 100%;
+  text-align: center;
+  font-style: normal;
+  color: var(--light);
+  background-color: var(--dark);
+}
